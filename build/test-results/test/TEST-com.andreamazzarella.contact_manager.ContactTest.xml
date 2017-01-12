@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.andreamazzarella.contact_manager.ContactTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-01-12T14:38:42" hostname="Andreas-Air" time="0.002">
+<testsuite name="com.andreamazzarella.contact_manager.ContactTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-01-12T17:14:34" hostname="Andreas-Air" time="0.003">
   <properties/>
-  <testcase name="knowsIfNameContains" classname="com.andreamazzarella.contact_manager.ContactTest" time="0.002"/>
+  <testcase name="knowsIfNameContains" classname="com.andreamazzarella.contact_manager.ContactTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
