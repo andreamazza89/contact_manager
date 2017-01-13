@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
+import static com.andreamazzarella.contact_manager.helpers.InMemoryRepositoryHelper.createContactInRepository;
 
 public class SearchContactIntegrationTest {
 
@@ -13,11 +14,7 @@ public class SearchContactIntegrationTest {
     public void displaysFoundContact() throws IOException {
         InMemoryRepository testRepo = new InMemoryRepository();
 
-        HashMap<String, String> andreasInfo = new HashMap<String, String>();
-        andreasInfo.put("name", "Andrea");
-        Contact andrea = new Contact(andreasInfo);
-
-        testRepo.addContact(andrea);
+        Contact andrea = createContactInRepository(testRepo, new String[]{"name", "Andrea"});
 
         InputStream consoleIn = new ByteArrayInputStream("3\nAnd\n".getBytes());
         ByteArrayOutputStream consoleOut = new ByteArrayOutputStream();

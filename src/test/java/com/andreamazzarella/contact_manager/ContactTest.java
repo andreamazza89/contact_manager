@@ -10,12 +10,12 @@ public class ContactTest {
 
     @Test
     public void knowsIfNameContains() {
-        HashMap<String, String> contactInfo = new HashMap<String, String>();
+        HashMap<String, String> contactInfo = new HashMap<>();
         contactInfo.put("name", "Andrea");
-
         Contact testContact = new Contact(contactInfo);
 
         boolean matchesSearchTerm = testContact.nameContains("And");
-        assert matchesSearchTerm;
+
+        assertEquals(true, matchesSearchTerm);
     }
 }

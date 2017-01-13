@@ -6,7 +6,7 @@ public class InMemoryRepository {
     private ArrayList<Contact> contacts;
 
     public InMemoryRepository() {
-        this.contacts = new ArrayList<Contact>();
+        this.contacts = new ArrayList<>();
     }
 
     public ArrayList allContacts() {
@@ -18,7 +18,7 @@ public class InMemoryRepository {
     }
 
     public ArrayList findContact(final String searchTerm) {
-        ArrayList<Contact> searchResults = new ArrayList<Contact>();
+        ArrayList<Contact> searchResults = new ArrayList<>();
         for (Contact contact : this.contacts) {
             if (contact.nameContains(searchTerm)) searchResults.add(contact);
         }
