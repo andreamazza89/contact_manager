@@ -13,10 +13,10 @@ public class TextBasedUI {
         this.printStream = printStream;
     }
 
-    public String chooseOption() throws IOException {
-        print("Pick an option");
-        print("3 - Search for a contact");
-        print("5 - Exit");
+    public String chooseAction() throws IOException {
+        print("Pick an option\n" +
+                "3 - Search for a contact\n" +
+                "5 - Exit");
         return consoleIn.readLine();
     }
 

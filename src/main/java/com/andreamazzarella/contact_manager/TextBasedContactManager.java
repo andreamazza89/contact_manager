@@ -1,6 +1,8 @@
 package com.andreamazzarella.contact_manager;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class TextBasedContactManager {
@@ -17,9 +19,10 @@ public class TextBasedContactManager {
 
     public void run() throws IOException {
         while (continueRunningProgram) {
-            String chosenOption = textBasedUI.chooseOption();
-            executeAction(chosenOption);
+            String chosenAction = textBasedUI.chooseAction();
+            executeAction(chosenAction);
         }
+        textBasedUI.exit();
     }
 
     private void executeAction(String chosenOption) throws IOException {
@@ -30,7 +33,6 @@ public class TextBasedContactManager {
                 textBasedUI.displayContacts(searchResults);
                 break;
             case "5":
-                textBasedUI.exit();
                 continueRunningProgram = false;
                 break;
         }

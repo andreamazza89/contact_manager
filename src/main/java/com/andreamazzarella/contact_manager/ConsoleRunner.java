@@ -26,7 +26,7 @@ public class ConsoleRunner {
 
         HashMap<String, String> giorgiosInfo = new HashMap<>();
         giorgiosInfo.put("name", "Giorgio");
-        andreasInfo.put("number", "9872347");
+        giorgiosInfo.put("number", "9872347");
         Contact giorgio = new Contact(giorgiosInfo);
 
         myRepo.addContact(andino);
