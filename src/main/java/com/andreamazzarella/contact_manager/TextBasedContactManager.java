@@ -3,18 +3,19 @@ package com.andreamazzarella.contact_manager;
 import java.io.*;
 import java.util.ArrayList;
 
-public class StringBasedUI {
+public class TextBasedContactManager {
 
     private final BufferedReader consoleIn;
     private final PrintStream printStream;
     private final InMemoryRepository repository;
     private boolean continueRunningProgram = true;
 
-    public StringBasedUI(InputStream consoleIn, PrintStream printStream, InMemoryRepository repository) {
+    public TextBasedContactManager(InputStream consoleIn, PrintStream printStream, InMemoryRepository repository) {
         this.consoleIn = new BufferedReader(new InputStreamReader(consoleIn));
         this.printStream = printStream;
         this.repository = repository;
     }
+
 
     public void run() throws IOException {
         while (continueRunningProgram) {
@@ -46,4 +47,5 @@ public class StringBasedUI {
     private void print(String message) {
         printStream.println(message);
     }
+
 }

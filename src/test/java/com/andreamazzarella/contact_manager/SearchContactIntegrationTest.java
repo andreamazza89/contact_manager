@@ -19,7 +19,8 @@ public class SearchContactIntegrationTest {
         ByteArrayOutputStream consoleOut = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(consoleOut);
 
-        ContactManager.run(consoleIn, printStream, testRepo);
+        TextBasedContactManager contactManager = new TextBasedContactManager(consoleIn, printStream, testRepo);
+        contactManager.run();
 
         assertEquals("Pick an option\n" +
                 "3 - Search for a contact\n" +

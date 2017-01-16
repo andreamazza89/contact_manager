@@ -9,7 +9,8 @@ public class ConsoleRunner {
 
         initialiseRepository(myRepo);
 
-        ContactManager.run(System.in, System.out, myRepo);
+        TextBasedContactManager contactManager = new TextBasedContactManager(System.in, System.out, myRepo);
+        contactManager.run();
     }
 
     private static void initialiseRepository(InMemoryRepository myRepo) {
