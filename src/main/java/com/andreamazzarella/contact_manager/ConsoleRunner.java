@@ -9,12 +9,20 @@ public class ConsoleRunner {
 
         HashMap<String, String> andreasInfo = new HashMap<>();
         andreasInfo.put("name", "Andrea");
+        andreasInfo.put("number", "774444");
         Contact andrea = new Contact(andreasInfo);
+
+        HashMap<String, String> andinoInfo = new HashMap<>();
+        andinoInfo.put("name", "Andino");
+        andinoInfo.put("number", "12366616");
+        Contact andino = new Contact(andinoInfo);
 
         HashMap<String, String> giorgiosInfo = new HashMap<>();
         giorgiosInfo.put("name", "Giorgio");
+        andreasInfo.put("number", "9872347");
         Contact giorgio = new Contact(giorgiosInfo);
 
+        myRepo.addContact(andino);
         myRepo.addContact(andrea);
         myRepo.addContact(giorgio);
 

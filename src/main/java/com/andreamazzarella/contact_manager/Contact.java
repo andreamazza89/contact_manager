@@ -12,12 +12,16 @@ public class Contact {
     }
 
     public String getName() {
-        return this.contactInfo.get("name");
+        return contactInfo.get("name");
     }
 
     public boolean nameContains(String searchTerm) {
         Pattern caseInsensitiveSearchTerm = Pattern.compile(searchTerm + ".*", Pattern.CASE_INSENSITIVE);
         Matcher searchMatch = caseInsensitiveSearchTerm.matcher(getName());
         return searchMatch.matches();
+    }
+
+    public String getNumber() {
+        return contactInfo.get("number");
     }
 }

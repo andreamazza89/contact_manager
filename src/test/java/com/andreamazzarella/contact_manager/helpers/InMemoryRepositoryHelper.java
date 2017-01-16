@@ -11,7 +11,6 @@ public class InMemoryRepositoryHelper {
         for (int key = 0; key < contactInformation.length; key += 2) {
             contactMap.put(contactInformation[key], contactInformation[key + 1]);
         }
-        System.out.println("contactMap = " + contactMap);
         Contact contact = new Contact(contactMap);
         repo.addContact(contact);
         return contact;
