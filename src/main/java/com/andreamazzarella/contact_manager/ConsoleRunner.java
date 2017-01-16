@@ -7,6 +7,12 @@ public class ConsoleRunner {
     public static void main(String[] args) throws IOException {
         InMemoryRepository myRepo = new InMemoryRepository();
 
+        initialiseRepository(myRepo);
+
+        ContactManager.run(System.in, System.out, myRepo);
+    }
+
+    private static void initialiseRepository(InMemoryRepository myRepo) {
         HashMap<String, String> andreasInfo = new HashMap<>();
         andreasInfo.put("name", "Andrea");
         andreasInfo.put("number", "774444");
@@ -25,7 +31,5 @@ public class ConsoleRunner {
         myRepo.addContact(andino);
         myRepo.addContact(andrea);
         myRepo.addContact(giorgio);
-
-        ContactManager.run(System.in, System.out, myRepo);
     }
 }
