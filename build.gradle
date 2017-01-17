@@ -5,7 +5,7 @@ apply plugin: 'java'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com/andreamazzarella/contact_manager/ConsoleRunner'
+        attributes 'Main-Class': 'com/andreamazzarella/contact_manager_gui/MainGUI'
     }
 }
 
