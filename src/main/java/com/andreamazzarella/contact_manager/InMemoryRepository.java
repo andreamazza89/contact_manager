@@ -19,6 +19,7 @@ public class InMemoryRepository {
 
     public ArrayList findContact(final String searchTerm) {
         ArrayList<Contact> searchResults = new ArrayList<>();
+//        contacts.stream().filter(contact -> contact.nameContains(searchTerm)).collect(Collectors.toList());
         for (Contact contact : this.contacts) {
             if (contact.nameContains(searchTerm)) searchResults.add(contact);
         }
