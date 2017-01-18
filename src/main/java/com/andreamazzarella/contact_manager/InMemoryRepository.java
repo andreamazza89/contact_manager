@@ -1,15 +1,17 @@
 package com.andreamazzarella.contact_manager;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InMemoryRepository {
-    private ArrayList<Contact> contacts;
+    private final ArrayList<Contact> contacts;
 
     public InMemoryRepository() {
         this.contacts = new ArrayList<>();
     }
 
-    public ArrayList allContacts() {
+    public List allContacts() {
         return this.contacts;
     }
 
@@ -17,13 +19,10 @@ public class InMemoryRepository {
         this.contacts.add(contact);
     }
 
-    public ArrayList findContact(final String searchTerm) {
-        ArrayList<Contact> searchResults = new ArrayList<>();
-//        contacts.stream().filter(contact -> contact.nameContains(searchTerm)).collect(Collectors.toList());
-        for (Contact contact : this.contacts) {
-            if (contact.nameContains(searchTerm)) searchResults.add(contact);
-        }
-        return searchResults;
+    public List findContact(final String searchTerm) {
+        return contacts.stream()
+                       .filter(contact -> contact.nameContains(searchTerm))
+                       .collect(Collectors.toList());
     }
 }
 

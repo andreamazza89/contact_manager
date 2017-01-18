@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MainGUI extends Application {
     @Override
@@ -34,17 +35,17 @@ public class MainGUI extends Application {
     }
 
     private static void initialiseRepository(InMemoryRepository myRepo) {
-        HashMap<String, String> andreasInfo = new HashMap<>();
+        Map<String, String> andreasInfo = new HashMap<>();
         andreasInfo.put("name", "Andrea");
         andreasInfo.put("number", "774444");
         Contact andrea = new Contact(andreasInfo);
 
-        HashMap<String, String> andinoInfo = new HashMap<>();
+        Map<String, String> andinoInfo = new HashMap<>();
         andinoInfo.put("name", "Andino");
         andinoInfo.put("number", "12366616");
         Contact andino = new Contact(andinoInfo);
 
-        HashMap<String, String> giorgiosInfo = new HashMap<>();
+        Map<String, String> giorgiosInfo = new HashMap<>();
         giorgiosInfo.put("name", "Giorgio");
         giorgiosInfo.put("number", "9872347");
         Contact giorgio = new Contact(giorgiosInfo);
