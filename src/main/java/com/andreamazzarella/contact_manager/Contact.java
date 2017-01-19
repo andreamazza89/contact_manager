@@ -36,7 +36,7 @@ public class Contact {
         return postalCode;
     }
 
-    public int getNumber() {
+    public int getTelephoneNumber() {
         return telephoneNumber;
     }
 

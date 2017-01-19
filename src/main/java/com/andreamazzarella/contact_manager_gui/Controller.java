@@ -2,7 +2,6 @@ package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.AddContact;
 import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.ContactBuilder;
 import com.andreamazzarella.contact_manager.InMemoryRepository;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -18,15 +17,24 @@ import javafx.util.Callback;
 import java.util.List;
 
 public class Controller {
-    @FXML private TextField searchTerm;
+    @FXML private TableView<Contact> searchResults;
+    @FXML private TableColumn firstNameColumn;
+    @FXML private TableColumn lastNameColumn;
+    @FXML private TableColumn streetAddressColumn;
+    @FXML private TableColumn postalCodeColumn;
+    @FXML private TableColumn telephoneNumberColumn;
+    @FXML private TableColumn ageColumn;
+
+    @FXML private TextField newFirstName;
+    @FXML private TextField newLastName;
+    @FXML private TextField newStreetAddress;
+    @FXML private TextField newPostalCode;
+    @FXML private TextField newTelephoneNumber;
     @FXML private TextField newAge;
 
-    @FXML private Text contactSavingAlerts;
+    @FXML private TextField searchTerm;
 
-    @FXML private TableView<Contact> searchResults;
-    @FXML private TableColumn nameColumn;
-    @FXML private TableColumn numberColumn;
-    @FXML private TableColumn ageColumn;
+    @FXML private Text contactSavingAlerts;
 
     @FXML private InMemoryRepository repository;
 
@@ -36,9 +44,18 @@ public class Controller {
 
     @FXML
     protected void saveContact(ActionEvent actionEvent) {
-        Contact newContact = new ContactBuilder().setAge(Integer.parseInt(newAge.getText())).build();
+        String firstName = newFirstName.getText();
+        String lastName = newLastName.getText();
+        String streetAddress = newStreetAddress.getText();
+        String postalCode = newPostalCode.getText();
+        int telephoneNumber = Integer.parseInt(newTelephoneNumber.getText());
+        int age = Integer.parseInt(newAge.getText());
+
+        Contact newContact = new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
+
         AddContact addContact = new AddContact(repository, newContact);
         AddContact.Result result = addContact.execute();
+
         switch (result) {
             case SUCCESS:
                 contactSavingAlerts.setText("Contact saved!");
@@ -62,15 +79,33 @@ public class Controller {
     private void updateContactsInTable(ObservableList<Contact> contactsFound) {
         searchResults.setItems(contactsFound);
 
-        nameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
+        firstNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
             public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
                 return new ReadOnlyObjectWrapper<>(contact.getValue().getFirstName());
             }
         });
 
-        numberColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
+        lastNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
             public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
-                return new ReadOnlyObjectWrapper<>(contact.getValue().getNumber());
+                return new ReadOnlyObjectWrapper<>(contact.getValue().getLastName());
+            }
+        });
+
+        streetAddressColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
+            public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
+                return new ReadOnlyObjectWrapper<>(contact.getValue().getStreetAddress());
+            }
+        });
+
+        postalCodeColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
+            public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
+                return new ReadOnlyObjectWrapper<>(contact.getValue().getPostalCode());
+            }
+        });
+
+        telephoneNumberColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
+            public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
+                return new ReadOnlyObjectWrapper<>(contact.getValue().getTelephoneNumber());
             }
         });
 

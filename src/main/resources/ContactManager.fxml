@@ -24,11 +24,23 @@
 
                     <TableView fx:id="searchResults" GridPane.columnIndex="0" GridPane.rowIndex="2">
                         <columns>
-                            <TableColumn fx:id="nameColumn" text="Name">
+                            <TableColumn fx:id="firstNameColumn" text="Name">
                                 <cellValueFactory>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="numberColumn" text="Number">
+                            <TableColumn fx:id="lastNameColumn" text="Surname">
+                                <cellValueFactory>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="streetAddressColumn" text="Street Address">
+                                <cellValueFactory>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="postalCodeColumn" text="Post Code">
+                                <cellValueFactory>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="telephoneNumberColumn" text="Post Code">
                                 <cellValueFactory>
                                 </cellValueFactory>
                             </TableColumn>

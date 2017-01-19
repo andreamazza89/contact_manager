@@ -19,10 +19,7 @@ public class MainGUI extends Application {
 
         loader.setController(new Controller(myRepo));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 600, 400);
-
-        Controller controller = loader.getController();
-        controller.setRepo(myRepo);
+        Scene scene = new Scene(root, 800, 600);
 
         primaryStage.setTitle("Contact Manager");
         primaryStage.setScene(scene);
