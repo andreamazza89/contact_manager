@@ -18,30 +18,17 @@
 
             <TableView fx:id="searchResults" GridPane.columnIndex="0" GridPane.rowIndex="2">
                 <columns>
-                    <TableColumn fx:id="firstNameColumn" text="Name">
-                        <cellValueFactory>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="lastNameColumn" text="Surname">
-                        <cellValueFactory>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="streetAddressColumn" text="Street Address">
-                        <cellValueFactory>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="postalCodeColumn" text="Post Code">
-                        <cellValueFactory>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="telephoneNumberColumn" text="Telephone Number">
-                        <cellValueFactory>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="ageColumn" text="Age">
-                        <cellValueFactory>
-                        </cellValueFactory>
-                    </TableColumn>
+                    <TableColumn fx:id="firstNameColumn" text="Name"/>
+
+                    <TableColumn fx:id="lastNameColumn" text="Surname"/>
+
+                    <TableColumn fx:id="streetAddressColumn" text="Street Address"/>
+
+                    <TableColumn fx:id="postalCodeColumn" text="Post Code"/>
+
+                    <TableColumn fx:id="telephoneNumberColumn" text="Telephone Number"/>
+
+                    <TableColumn fx:id="ageColumn" text="Age"/>
                 </columns>
             </TableView>
 

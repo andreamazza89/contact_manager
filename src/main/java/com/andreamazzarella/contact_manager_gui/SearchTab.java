@@ -60,8 +60,8 @@ public class SearchTab extends Tab {
     }
 
     @FXML
-    private void updateContactsInSearchTable(ObservableList<Contact> contactsFound) {
-        searchResults.setItems(contactsFound);
+    private void updateContactsInSearchTable(ObservableList<Contact> contacts) {
+        searchResults.setItems(contacts);
 
         firstNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
             public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
