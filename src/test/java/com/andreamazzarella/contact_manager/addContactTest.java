@@ -24,25 +24,15 @@ public class addContactTest {
     }
 
     @Test
-    public void hasNoMessageBeforeExecutingCommand() {
-        //make this an interface so you can mock it!
-        InMemoryRepository testRepo = new InMemoryRepository();
-        Contact testContact = new ContactBuilder().setFirstName("test").build();
-        AddContact addContact = new AddContact(testRepo, testContact);
-
-        assertEquals("", addContact.message());
-    }
-
-    @Test
     public void hasSuccessMessageAfterStoringContact() {
         //make this an interface so you can mock it!
         InMemoryRepository testRepo = new InMemoryRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").build();
         AddContact addContact = new AddContact(testRepo, testContact);
 
-        addContact.execute();
+        AddContact.Result result = addContact.execute();
 
-        assertEquals("Contact saved", addContact.message());
+        assertEquals(AddContact.Result.SUCCESS, result);
     }
 
     @Test
@@ -65,9 +55,9 @@ public class addContactTest {
         Contact testContact = new ContactBuilder().setFirstName("test").setAge(16).build();
         AddContact addContact = new AddContact(testRepo, testContact);
 
-        addContact.execute();
+        AddContact.Result result = addContact.execute();
 
-        assertEquals("Contact was not saved: under age minimum", addContact.message());
+        assertEquals(AddContact.Result.UNDER_MINIMUM_AGE, result);
     }
 
 }
