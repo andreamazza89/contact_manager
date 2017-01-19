@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 
-<TabPane fx:controller="com.andreamazzarella.contact_manager_gui.Controller" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml"  >
+<TabPane tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml"  >
     <tabs>
         <Tab text="Search contacts" >
             <content>

@@ -19,6 +19,9 @@ public class Controller {
     @FXML private TableColumn numberColumn;
     @FXML private InMemoryRepository repository;
 
+    public Controller(InMemoryRepository repository) {
+        this.repository = repository;
+    }
 
     @FXML
     protected void displaySearchResults(ActionEvent actionEvent) {

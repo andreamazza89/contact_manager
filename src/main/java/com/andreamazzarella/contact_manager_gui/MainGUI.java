@@ -16,6 +16,7 @@ public class MainGUI extends Application {
         initialiseRepository(myRepo);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContactManager.fxml"));
+        loader.setController(new Controller(myRepo));
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 400);
 
