@@ -34,7 +34,7 @@ public class Controller {
 
         nameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
             public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
-                return new ReadOnlyObjectWrapper<>(contact.getValue().getName());
+                return new ReadOnlyObjectWrapper<>(contact.getValue().getFirstName());
             }
         });
 

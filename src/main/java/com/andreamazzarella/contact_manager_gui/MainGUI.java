@@ -1,6 +1,7 @@
 package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.Contact;
+import com.andreamazzarella.contact_manager.ContactBuilder;
 import com.andreamazzarella.contact_manager.InMemoryRepository;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,15 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         InMemoryRepository myRepo = new InMemoryRepository();
         initialiseRepository(myRepo);
-
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContactManager.fxml"));
         Parent root = loader.load();
@@ -35,20 +32,9 @@ public class MainGUI extends Application {
     }
 
     private static void initialiseRepository(InMemoryRepository myRepo) {
-        Map<String, String> andreasInfo = new HashMap<>();
-        andreasInfo.put("name", "Andrea");
-        andreasInfo.put("number", "774444");
-        Contact andrea = new Contact(andreasInfo);
-
-        Map<String, String> andinoInfo = new HashMap<>();
-        andinoInfo.put("name", "Andino");
-        andinoInfo.put("number", "12366616");
-        Contact andino = new Contact(andinoInfo);
-
-        Map<String, String> giorgiosInfo = new HashMap<>();
-        giorgiosInfo.put("name", "Giorgio");
-        giorgiosInfo.put("number", "9872347");
-        Contact giorgio = new Contact(giorgiosInfo);
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        Contact andino = new ContactBuilder().setFirstName("Andino").build();
+        Contact giorgio = new ContactBuilder().setFirstName("Giorgio").build();
 
         myRepo.addContact(andino);
         myRepo.addContact(andrea);

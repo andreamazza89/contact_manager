@@ -1,19 +1,24 @@
 package com.andreamazzarella.contact_manager;
 
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.andreamazzarella.contact_manager.helpers.InMemoryRepositoryHelper.createContactInRepository;
 import static org.junit.Assert.assertEquals;
 
 
 public class InMemoryRepositoryTest {
     private InMemoryRepository testRepo = new InMemoryRepository();;
-    private Contact andrea = createContactInRepository(testRepo, new String[] {"name", "Andrea"});
+    private Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+
+    @Before
+    public void populateRepository() {
+        testRepo.addContact(andrea);
+    }
 
     @Test
     public void noContactsExist() {
@@ -54,7 +59,8 @@ public class InMemoryRepositoryTest {
 
     @Test
     public void findsAllContactsAvailable() {
-        Contact giorgio = createContactInRepository(testRepo, new String[]{"name", "Giorgio"});
+        Contact giorgio = new ContactBuilder().setFirstName("Giorgio").build();
+        testRepo.addContact(giorgio);
 
         List allContacts = testRepo.allContacts();
         assertEquals(Arrays.asList(andrea, giorgio), allContacts);
