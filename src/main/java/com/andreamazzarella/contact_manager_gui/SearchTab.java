@@ -37,15 +37,26 @@ public class SearchTab extends Tab {
         loader.setRoot(this);
         loader.setController(this);
         loader.load();
+
+        loadAllContacts();
+    }
+
+    private void loadAllContacts() {
+        List<Contact> allContacts = repository.allContacts();
+
+        updateContactsInSearchTable(makeContactListObservable(allContacts));
     }
 
     @FXML
     protected void updateSearchResults(ActionEvent actionEvent) {
         String searchFor = searchTerm.getText();
         List<Contact> matches = repository.findContact(searchFor);
-        ObservableList contactsFound = FXCollections.observableArrayList(matches);
 
-        updateContactsInSearchTable(contactsFound);
+        updateContactsInSearchTable(makeContactListObservable(matches));
+    }
+
+    private ObservableList makeContactListObservable(List<Contact> matches) {
+        return FXCollections.observableArrayList(matches);
     }
 
     @FXML
