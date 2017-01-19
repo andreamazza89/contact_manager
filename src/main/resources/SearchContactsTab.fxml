@@ -7,27 +7,44 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 
-<Tab text="Search contacts" xmlns:fx="http://javafx.com/fxml">
+<fx:root type="javafx.scene.control.Tab" text="Search contacts" xmlns:fx="http://javafx.com/fxml">
     <content>
         <GridPane alignment="center" hgap="10" vgap="10">
 
             <Label text="Enter search term" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
-            <TextField fx:id="searchTerm" onAction="#displaySearchResults"
+            <TextField fx:id="searchTerm" onAction="#updateSearchResults"
                        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
             <TableView fx:id="searchResults" GridPane.columnIndex="0" GridPane.rowIndex="2">
                 <columns>
-                    <TableColumn fx:id="nameColumn" text="Name">
+                    <TableColumn fx:id="firstNameColumn" text="Name">
                         <cellValueFactory>
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="numberColumn" text="Number">
-
+                    <TableColumn fx:id="lastNameColumn" text="Surname">
+                        <cellValueFactory>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="streetAddressColumn" text="Street Address">
+                        <cellValueFactory>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="postalCodeColumn" text="Post Code">
+                        <cellValueFactory>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="telephoneNumberColumn" text="Post Code">
+                        <cellValueFactory>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="ageColumn" text="Age">
+                        <cellValueFactory>
+                        </cellValueFactory>
                     </TableColumn>
                 </columns>
             </TableView>
 
         </GridPane>
     </content>
-</Tab>
+</fx:root>

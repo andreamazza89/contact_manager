@@ -1,6 +1,5 @@
 package com.andreamazzarella.contact_manager_gui;
 
-import com.andreamazzarella.contact_manager.AddContact;
 import com.andreamazzarella.contact_manager.Contact;
 import com.andreamazzarella.contact_manager.InMemoryRepository;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -8,15 +7,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.util.List;
 
-public class Controller {
+public class SearchTab extends Tab {
+    @FXML private TextField searchTerm;
+
     @FXML private TableView<Contact> searchResults;
     @FXML private TableColumn firstNameColumn;
     @FXML private TableColumn lastNameColumn;
@@ -25,53 +28,15 @@ public class Controller {
     @FXML private TableColumn telephoneNumberColumn;
     @FXML private TableColumn ageColumn;
 
-    @FXML private TextField newFirstName;
-    @FXML private TextField newLastName;
-    @FXML private TextField newStreetAddress;
-    @FXML private TextField newPostalCode;
-    @FXML private TextField newTelephoneNumber;
-    @FXML private TextField newAge;
+    private InMemoryRepository repository;
 
-    @FXML private TextField searchTerm;
-
-    @FXML private Text contactSavingAlerts;
-
-    @FXML private InMemoryRepository repository;
-
-    public Controller(InMemoryRepository repository) {
+    public SearchTab(InMemoryRepository repository) throws IOException {
         this.repository = repository;
-    }
 
-    @FXML
-    protected void saveContact(ActionEvent actionEvent) {
-        Contact newContact = createContactFromFields();
-
-        AddContact addContact = new AddContact(repository, newContact);
-        AddContact.Result result = addContact.execute();
-
-        updateUIWithOperationResult(result);
-    }
-
-    private void updateUIWithOperationResult(AddContact.Result result) {
-        switch (result) {
-            case SUCCESS:
-                contactSavingAlerts.setText("Contact saved!");
-                break;
-            case UNDER_MINIMUM_AGE:
-                contactSavingAlerts.setText("Contact not saved: under minimum age!");
-                break;
-        }
-    }
-
-    private Contact createContactFromFields() {
-        String firstName = newFirstName.getText();
-        String lastName = newLastName.getText();
-        String streetAddress = newStreetAddress.getText();
-        String postalCode = newPostalCode.getText();
-        int telephoneNumber = Integer.parseInt(newTelephoneNumber.getText());
-        int age = Integer.parseInt(newAge.getText());
-
-        return new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SearchContactsTab.fxml"));
+        loader.setRoot(this);
+        loader.setController(this);
+        loader.load();
     }
 
     @FXML
@@ -118,9 +83,9 @@ public class Controller {
         });
 
         ageColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
-                public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
-                    return new ReadOnlyObjectWrapper<>(contact.getValue().getAge());
-                }
+            public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
+                return new ReadOnlyObjectWrapper<>(contact.getValue().getAge());
+            }
         });
     }
 

@@ -3,9 +3,8 @@ package com.andreamazzarella.contact_manager_gui;
 import com.andreamazzarella.contact_manager.Contact;
 import com.andreamazzarella.contact_manager.InMemoryRepository;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
 public class MainGUI extends Application {
@@ -14,10 +13,12 @@ public class MainGUI extends Application {
         InMemoryRepository myRepo = new InMemoryRepository();
         initialiseRepository(myRepo);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ContactManager.fxml"));
+        SearchTab searchTab = new SearchTab(myRepo);
+        SaveTab saveTab = new SaveTab(myRepo);
 
-        loader.setController(new Controller(myRepo));
-        Parent root = loader.load();
+        TabPane root = new TabPane();
+        root.getTabs().add(searchTab);
+        root.getTabs().add(saveTab);
         Scene scene = new Scene(root, 800, 600);
 
         primaryStage.setTitle("Contact Manager");
