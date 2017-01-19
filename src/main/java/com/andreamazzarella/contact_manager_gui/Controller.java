@@ -44,18 +44,15 @@ public class Controller {
 
     @FXML
     protected void saveContact(ActionEvent actionEvent) {
-        String firstName = newFirstName.getText();
-        String lastName = newLastName.getText();
-        String streetAddress = newStreetAddress.getText();
-        String postalCode = newPostalCode.getText();
-        int telephoneNumber = Integer.parseInt(newTelephoneNumber.getText());
-        int age = Integer.parseInt(newAge.getText());
-
-        Contact newContact = new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
+        Contact newContact = createContactFromFields();
 
         AddContact addContact = new AddContact(repository, newContact);
         AddContact.Result result = addContact.execute();
 
+        updateUIWithOperationResult(result);
+    }
+
+    private void updateUIWithOperationResult(AddContact.Result result) {
         switch (result) {
             case SUCCESS:
                 contactSavingAlerts.setText("Contact saved!");
@@ -66,17 +63,28 @@ public class Controller {
         }
     }
 
+    private Contact createContactFromFields() {
+        String firstName = newFirstName.getText();
+        String lastName = newLastName.getText();
+        String streetAddress = newStreetAddress.getText();
+        String postalCode = newPostalCode.getText();
+        int telephoneNumber = Integer.parseInt(newTelephoneNumber.getText());
+        int age = Integer.parseInt(newAge.getText());
+
+        return new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
+    }
+
     @FXML
     protected void updateSearchResults(ActionEvent actionEvent) {
         String searchFor = searchTerm.getText();
         List<Contact> matches = repository.findContact(searchFor);
         ObservableList contactsFound = FXCollections.observableArrayList(matches);
 
-        updateContactsInTable(contactsFound);
+        updateContactsInSearchTable(contactsFound);
     }
 
     @FXML
-    private void updateContactsInTable(ObservableList<Contact> contactsFound) {
+    private void updateContactsInSearchTable(ObservableList<Contact> contactsFound) {
         searchResults.setItems(contactsFound);
 
         firstNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {

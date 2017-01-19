@@ -3,12 +3,12 @@ package com.andreamazzarella.contact_manager;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class addContactTest {
+public class AddContactTest {
 
     @Test
     public void successfullyStoresAContact() {
@@ -19,12 +19,12 @@ public class addContactTest {
 
         addContact.execute();
 
-        List<Contact> contactsAdded = testRepo.allContacts();
-        assertEquals(Arrays.asList(testContact), contactsAdded);
+        List contactsAdded = testRepo.allContacts();
+        assertEquals(Collections.singletonList(testContact), contactsAdded);
     }
 
     @Test
-    public void hasSuccessMessageAfterStoringContact() {
+    public void hasSuccessResultAfterStoringContact() {
         //make this an interface so you can mock it!
         InMemoryRepository testRepo = new InMemoryRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").build();
@@ -44,12 +44,12 @@ public class addContactTest {
 
         addContact.execute();
 
-        List<Contact> contactsAdded = testRepo.allContacts();
+        List contactsAdded = testRepo.allContacts();
         assertEquals(new ArrayList<>(), contactsAdded);
     }
 
     @Test
-    public void hasFailureMessageIfContactIsUnderAgeMinimum() {
+    public void hasFailureResultIfContactIsUnderAgeMinimum() {
         //make this an interface so you can mock it!
         InMemoryRepository testRepo = new InMemoryRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").setAge(16).build();
