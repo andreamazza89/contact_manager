@@ -19,6 +19,7 @@ public class MainGUI extends Application {
         TabPane root = new TabPane();
         root.getTabs().add(searchTab);
         root.getTabs().add(saveTab);
+
         Scene scene = new Scene(root, 800, 600);
 
         primaryStage.setTitle("Contact Manager");

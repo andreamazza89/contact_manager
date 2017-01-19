@@ -34,7 +34,7 @@
                         <cellValueFactory>
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="telephoneNumberColumn" text="Post Code">
+                    <TableColumn fx:id="telephoneNumberColumn" text="Telephone Number">
                         <cellValueFactory>
                         </cellValueFactory>
                     </TableColumn>
