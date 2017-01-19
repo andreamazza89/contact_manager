@@ -1,7 +1,6 @@
 package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.ContactBuilder;
 import com.andreamazzarella.contact_manager.InMemoryRepository;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -31,12 +30,8 @@ public class MainGUI extends Application {
     }
 
     private static void initialiseRepository(InMemoryRepository myRepo) {
-        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
-        Contact andino = new ContactBuilder().setFirstName("Andino").build();
-        Contact giorgio = new ContactBuilder().setFirstName("Giorgio").build();
+        Contact andrea = new Contact("Andrea", "Mazzarella", "Viale Trieste", "GG55", 770012390, 27);
 
-        myRepo.addContact(andino);
         myRepo.addContact(andrea);
-        myRepo.addContact(giorgio);
     }
 }
