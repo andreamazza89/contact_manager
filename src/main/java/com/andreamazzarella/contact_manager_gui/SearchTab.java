@@ -63,6 +63,9 @@ public class SearchTab extends Tab {
     private void updateContactsInSearchTable(ObservableList<Contact> contacts) {
         searchResults.setItems(contacts);
 
+        // feels like this should be refactored as these are effectively all doing the same
+        // also I think I should separate updating the observable list and the initial setCellValueFactory setup
+
         firstNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ReadOnlyObjectWrapper>() {
             public ReadOnlyObjectWrapper call(TableColumn.CellDataFeatures<Contact, String> contact) {
                 return new ReadOnlyObjectWrapper<>(contact.getValue().getFirstName());
