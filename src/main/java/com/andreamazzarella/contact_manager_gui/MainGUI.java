@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class MainGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        InMemoryContactsRepository myRepo = new InMemoryContactsRepository();
+        ContactsRepository myRepo = new InMemoryContactsRepository();
         initialiseRepository(myRepo);
 
         ViewRouter viewRouter = new ViewRouter(myRepo);
@@ -28,7 +28,7 @@ public class MainGUI extends Application {
         launch(args);
     }
 
-    private static void initialiseRepository(InMemoryContactsRepository myRepo) {
+    private static void initialiseRepository(ContactsRepository myRepo) {
         Contact andrea = new Contact("Andrea", "Mazzarella", "Viale Trieste", "GG55", 770012390, 27);
         Contact mario = new Contact("Mario", "Luigi", "Viale Trieste", "GG55", 668899, 111);
 

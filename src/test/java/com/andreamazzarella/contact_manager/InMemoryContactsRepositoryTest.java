@@ -1,25 +1,16 @@
 package com.andreamazzarella.contact_manager;
 
-
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 
-public class InMemoryRepositoryTest {
-    private InMemoryContactsRepository testRepo = new InMemoryContactsRepository();;
-    private Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
-
-    @Before
-    public void populateRepository() {
-        testRepo.addContact(andrea);
-    }
-
+public class InMemoryContactsRepositoryTest {
     @Test
     public void noContactsFoundIfNoContactsExist() {
         InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
@@ -31,6 +22,10 @@ public class InMemoryRepositoryTest {
 
     @Test
     public void searchForInexistentContact() {
+        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        testRepo.addContact(andrea);
+
         List searchResults = testRepo.findContact("Giorgio");
 
         assertEquals(new ArrayList<Contact>(), searchResults);
@@ -38,27 +33,43 @@ public class InMemoryRepositoryTest {
 
     @Test
     public void searchForExistingContactByFullName() {
+        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        testRepo.addContact(andrea);
+
         List searchResults = testRepo.findContact("Andrea");
 
-        assertEquals(Arrays.asList(andrea), searchResults);
+        assertEquals(Collections.singletonList(andrea), searchResults);
     }
 
     @Test
     public void searchForExistingContactByShortenedName() {
+        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        testRepo.addContact(andrea);
+
         List searchResults = testRepo.findContact("And");
 
-        assertEquals(Arrays.asList(andrea), searchResults);
+        assertEquals(Collections.singletonList(andrea), searchResults);
     }
 
     @Test
     public void searchForExistingContactByShortenedNameCaseInsensitive() {
+        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        testRepo.addContact(andrea);
+
         List searchResults = testRepo.findContact("and");
 
-        assertEquals(Arrays.asList(andrea), searchResults);
+        assertEquals(Collections.singletonList(andrea), searchResults);
     }
 
     @Test
     public void findsAllContactsAvailable() {
+        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        testRepo.addContact(andrea);
+
         Contact giorgio = new ContactBuilder().setFirstName("Giorgio").build();
         testRepo.addContact(giorgio);
 
@@ -68,6 +79,10 @@ public class InMemoryRepositoryTest {
 
     @Test
     public void removeContact() {
+        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        testRepo.addContact(andrea);
+
         testRepo.deleteContact(andrea);
 
         List allContacts = testRepo.allContacts();

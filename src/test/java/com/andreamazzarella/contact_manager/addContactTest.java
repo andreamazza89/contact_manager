@@ -12,8 +12,7 @@ public class AddContactTest {
 
     @Test
     public void successfullyStoresAContact() {
-        //make this an interface so you can mock it!
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").build();
         AddContact addContact = new AddContact(testRepo, testContact);
 
@@ -25,8 +24,7 @@ public class AddContactTest {
 
     @Test
     public void hasSuccessResultAfterStoringContact() {
-        //make this an interface so you can mock it!
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").build();
         AddContact addContact = new AddContact(testRepo, testContact);
 
@@ -37,8 +35,7 @@ public class AddContactTest {
 
     @Test
     public void willNotSaveIfContactIsUnderAgeMinimum() {
-        //make this an interface so you can mock it!
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").setAge(16).build();
         AddContact addContact = new AddContact(testRepo, testContact);
 
@@ -50,8 +47,7 @@ public class AddContactTest {
 
     @Test
     public void hasFailureResultIfContactIsUnderAgeMinimum() {
-        //make this an interface so you can mock it!
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").setAge(16).build();
         AddContact addContact = new AddContact(testRepo, testContact);
 
