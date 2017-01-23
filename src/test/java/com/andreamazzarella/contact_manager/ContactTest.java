@@ -8,6 +8,9 @@ public class ContactTest {
 
     @Test
     public void knowsIfNameContains() {
+
+        //? This responsibility should be pushed away from the Contact if and when the need for more searching features arises
+
         Contact testContact = new ContactBuilder().setFirstName("Andrea").build();
 
         boolean matchesSearchTerm = testContact.nameContains("And");
