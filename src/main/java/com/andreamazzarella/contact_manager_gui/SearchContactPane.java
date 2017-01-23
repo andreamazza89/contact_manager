@@ -70,17 +70,17 @@ public class SearchContactPane extends GridPane {
     }
 
     private void setCellValueFactories() {
-        firstNameColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getFirstName()));
+        firstNameColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getFirstName()));
 
-        lastNameColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getLastName()));
+        lastNameColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getLastName()));
 
-        streetAddressColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getStreetAddress()));
+        streetAddressColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getStreetAddress()));
 
-        postalCodeColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getPostalCode()));
+        postalCodeColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getPostalCode()));
 
-        telephoneNumberColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getTelephoneNumber().getValue()));
+        telephoneNumberColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getTelephoneNumber().getValue()));
 
-        ageColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(String.valueOf(contact.getValue().getAge())));
+        ageColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(String.valueOf(cell.getValue().getAge())));
     }
 
 }
