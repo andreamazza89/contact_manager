@@ -11,8 +11,7 @@ public class RemoveContactTest {
 
     @Test
     public void successfullyRemovesContact() {
-        //make this an interface so you can mock it!
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").build();
         AddContact addContact = new AddContact(testRepo, testContact);
         RemoveContact removeContact = new RemoveContact(testRepo, testContact);
@@ -26,8 +25,7 @@ public class RemoveContactTest {
 
     @Test
     public void hasSuccessResultAfterRemovingContact() {
-        //make this an interface so you can mock it!
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").build();
         AddContact addContact = new AddContact(testRepo, testContact);
         RemoveContact removeContact = new RemoveContact(testRepo, testContact);
@@ -40,8 +38,7 @@ public class RemoveContactTest {
 
     @Test
     public void hasInexistentContactResultIfContactIsInexistent() {
-        //make this an interface so you can mock it!
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact testContact = new ContactBuilder().setFirstName("test").build();
         RemoveContact removeContact = new RemoveContact(testRepo, testContact);
 
