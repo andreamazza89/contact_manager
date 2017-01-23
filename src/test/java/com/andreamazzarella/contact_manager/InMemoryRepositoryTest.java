@@ -21,7 +21,7 @@ public class InMemoryRepositoryTest {
     }
 
     @Test
-    public void noContactsExist() {
+    public void noContactsFoundIfNoContactsExist() {
         InMemoryRepository testRepo = new InMemoryRepository();
 
         List allContacts = testRepo.allContacts();
@@ -64,5 +64,13 @@ public class InMemoryRepositoryTest {
 
         List allContacts = testRepo.allContacts();
         assertEquals(Arrays.asList(andrea, giorgio), allContacts);
+    }
+
+    @Test
+    public void removeContact() {
+        testRepo.delete(andrea);
+
+        List allContacts = testRepo.allContacts();
+        assertEquals(allContacts, new ArrayList<Contact>());
     }
 }
