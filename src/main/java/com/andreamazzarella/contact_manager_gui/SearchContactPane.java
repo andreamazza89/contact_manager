@@ -70,6 +70,10 @@ public class SearchContactPane extends GridPane {
     }
 
     private void setCellValueFactories() {
+        //? not sure I can remove the apparent repetition here
+
+        //? I could remove Demeter violation with a Contact presenter? would make the lambda much less lean though
+
         firstNameColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getFirstName()));
 
         lastNameColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getLastName()));
