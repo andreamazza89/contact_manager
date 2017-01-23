@@ -29,7 +29,7 @@ public class ViewContactPane extends GridPane {
     private Contact contact;
     private final InMemoryRepository repository;
 
-    public ViewContactPane(Contact contact, ViewRouter viewRouter, InMemoryRepository repository) throws IOException {
+    ViewContactPane(Contact contact, ViewRouter viewRouter, InMemoryRepository repository) throws IOException {
         this.viewRouter = viewRouter;
         this.contact = contact;
         this.repository = repository;

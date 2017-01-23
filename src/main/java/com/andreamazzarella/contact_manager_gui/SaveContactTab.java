@@ -26,7 +26,7 @@ public class SaveContactTab extends Tab {
 
     private InMemoryRepository repository;
 
-    public SaveContactTab(InMemoryRepository repository) throws IOException {
+    SaveContactTab(InMemoryRepository repository) throws IOException {
         this.repository = repository;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SaveContactsTab.fxml"));

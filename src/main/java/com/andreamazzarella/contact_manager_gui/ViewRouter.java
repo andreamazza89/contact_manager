@@ -7,19 +7,17 @@ import javafx.scene.control.TabPane;
 
 import java.io.IOException;
 
-public class ViewRouter {
+class ViewRouter {
 
     private final Tab searchContactTab;
-    private final Tab saveContactTab;
     private final InMemoryRepository myRepo;
 
-    public ViewRouter(InMemoryRepository myRepo) {
+    ViewRouter(InMemoryRepository myRepo) {
         this.searchContactTab = new Tab("Search Contacts");
-        this.saveContactTab = new Tab("Add Contacts");
         this.myRepo = myRepo;
     }
 
-    public TabPane generateRoot() throws IOException {
+    TabPane generateRoot() throws IOException {
         SearchContactPane searchPane = new SearchContactPane(myRepo, this);
         SaveContactTab saveContactTab = new SaveContactTab(myRepo);
 
@@ -32,17 +30,11 @@ public class ViewRouter {
         return root;
     }
 
-    public void showViewContactPane(Contact selectedContact) throws IOException {
-
-        //? I should not reinitialise this view every time we switch to it
-
+    void showViewContactPane(Contact selectedContact) throws IOException {
         searchContactTab.setContent(new ViewContactPane(selectedContact, this, myRepo));
     }
 
-    public void showSearchContactPane() throws IOException {
-
-        //? I should not reinitialise this view every time we switch to it
-
+    void showSearchContactPane() throws IOException {
         searchContactTab.setContent(new SearchContactPane(myRepo, this));
     }
 }
