@@ -58,7 +58,7 @@ public class ViewContactPane extends GridPane {
 
         Optional<ButtonType> confirmation = alert.showAndWait();
 
-        if (confirmation.get() == ButtonType.OK){
+        if (confirmation.isPresent() && confirmation.get() == ButtonType.OK) {
             RemoveContact removeContact = new RemoveContact(repository, contact);
             RemoveContact.Result result = removeContact.execute();
 
@@ -71,10 +71,20 @@ public class ViewContactPane extends GridPane {
         switch (result) {
             case SUCCESS:
                 contactAlterationAlerts.setText("Contact deleted");
+                clearAllInputFields();
                 break;
             case CONTACT_DOES_NOT_EXIST:
                 contactAlterationAlerts.setText("Contact does not exist.");
                 break;
         }
+    }
+
+    private void clearAllInputFields() {
+        viewContactFirstName.setText("");
+        viewContactLastName.setText("");
+        viewContactStreetAddress.setText("");
+        viewContactPostalCode.setText("");
+        viewContactTelephoneNumber.setText("");
+        viewContactAge.setText(String.valueOf(""));
     }
 }
