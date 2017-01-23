@@ -19,7 +19,7 @@ public class InMemoryContactsRepository implements ContactsRepository {
         this.contacts.add(contact);
     }
 
-    public List<Contact> findContact(final String searchTerm) {
+    public List<Contact> findContact(String searchTerm) {
         return contacts.stream()
                        .filter(contact -> contact.nameContains(searchTerm))
                        .collect(Collectors.toList());
