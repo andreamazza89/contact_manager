@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public class InMemoryRepositoryTest {
-    private InMemoryRepository testRepo = new InMemoryRepository();;
+    private InMemoryContactsRepository testRepo = new InMemoryContactsRepository();;
     private Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
 
     @Before
@@ -22,7 +22,7 @@ public class InMemoryRepositoryTest {
 
     @Test
     public void noContactsFoundIfNoContactsExist() {
-        InMemoryRepository testRepo = new InMemoryRepository();
+        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
 
         List allContacts = testRepo.allContacts();
 
@@ -68,7 +68,7 @@ public class InMemoryRepositoryTest {
 
     @Test
     public void removeContact() {
-        testRepo.delete(andrea);
+        testRepo.deleteContact(andrea);
 
         List allContacts = testRepo.allContacts();
         assertEquals(allContacts, new ArrayList<Contact>());

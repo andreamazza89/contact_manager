@@ -6,10 +6,10 @@ public class AddContact {
         SUCCESS, UNDER_MINIMUM_AGE;
     }
 
-    private final InMemoryRepository repository;
+    private final ContactsRepository repository;
     private final Contact contact;
 
-    public AddContact(InMemoryRepository repository, Contact contact) {
+    public AddContact(ContactsRepository repository, Contact contact) {
         this.repository = repository;
         this.contact = contact;
     }

@@ -1,7 +1,7 @@
 package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.InMemoryRepository;
+import com.andreamazzarella.contact_manager.ContactsRepository;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,10 +26,10 @@ public class SearchContactPane extends GridPane {
     @FXML private TableColumn<Contact, String> ageColumn;
     @FXML private TableColumn<Contact, String> viewContactColumn;
 
-    private InMemoryRepository repository;
+    private ContactsRepository repository;
     private ViewRouter viewRouter;
 
-    SearchContactPane(InMemoryRepository repository, ViewRouter viewRouter) throws IOException {
+    SearchContactPane(ContactsRepository repository, ViewRouter viewRouter) throws IOException {
         this.repository = repository;
         this.viewRouter = viewRouter;
 

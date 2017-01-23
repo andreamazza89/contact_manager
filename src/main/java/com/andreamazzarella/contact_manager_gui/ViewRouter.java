@@ -1,7 +1,7 @@
 package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.InMemoryRepository;
+import com.andreamazzarella.contact_manager.ContactsRepository;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
@@ -10,9 +10,9 @@ import java.io.IOException;
 class ViewRouter {
 
     private final Tab searchContactTab;
-    private final InMemoryRepository myRepo;
+    private final ContactsRepository myRepo;
 
-    ViewRouter(InMemoryRepository myRepo) {
+    ViewRouter(ContactsRepository myRepo) {
         this.searchContactTab = new Tab("Search Contacts");
         this.myRepo = myRepo;
     }
