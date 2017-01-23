@@ -29,7 +29,9 @@ public class MainGUI extends Application {
 
     private static void initialiseRepository(InMemoryRepository myRepo) {
         Contact andrea = new Contact("Andrea", "Mazzarella", "Viale Trieste", "GG55", 770012390, 27);
+        Contact mario = new Contact("Mario", "Luigi", "Viale Trieste", "GG55", 668899, 111);
 
         myRepo.addContact(andrea);
+        myRepo.addContact(mario);
     }
 }
