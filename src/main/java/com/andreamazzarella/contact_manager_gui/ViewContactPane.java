@@ -1,7 +1,7 @@
 package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.InMemoryRepository;
+import com.andreamazzarella.contact_manager.ContactsRepository;
 import com.andreamazzarella.contact_manager.RemoveContact;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,9 +27,9 @@ public class ViewContactPane extends GridPane {
     private ViewRouter viewRouter;
 
     private Contact contact;
-    private final InMemoryRepository repository;
+    private final ContactsRepository repository;
 
-    ViewContactPane(Contact contact, ViewRouter viewRouter, InMemoryRepository repository) throws IOException {
+    ViewContactPane(Contact contact, ViewRouter viewRouter, ContactsRepository repository) throws IOException {
         this.viewRouter = viewRouter;
         this.contact = contact;
         this.repository = repository;
@@ -54,7 +54,7 @@ public class ViewContactPane extends GridPane {
     @FXML protected void removeContact() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete user");
-        alert.setContentText("Are you sure you want to delete this user?");
+        alert.setContentText("Are you sure you want to deleteContact this user?");
 
         Optional<ButtonType> confirmation = alert.showAndWait();
 

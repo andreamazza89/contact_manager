@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InMemoryRepository {
+public class InMemoryContactsRepository implements ContactsRepository {
     private final ArrayList<Contact> contacts;
 
-    public InMemoryRepository() {
+    public InMemoryContactsRepository() {
         this.contacts = new ArrayList<>();
     }
 
@@ -25,7 +25,7 @@ public class InMemoryRepository {
                        .collect(Collectors.toList());
     }
 
-    public void delete(Contact contact) {
+    public void deleteContact(Contact contact) {
         contacts.remove(contact);
     }
 }

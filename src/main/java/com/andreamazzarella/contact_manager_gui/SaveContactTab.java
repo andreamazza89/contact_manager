@@ -2,7 +2,7 @@ package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.AddContact;
 import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.InMemoryRepository;
+import com.andreamazzarella.contact_manager.ContactsRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,9 +24,9 @@ public class SaveContactTab extends Tab {
 
     @FXML private Text contactSavingAlerts;
 
-    private InMemoryRepository repository;
+    private ContactsRepository repository;
 
-    SaveContactTab(InMemoryRepository repository) throws IOException {
+    SaveContactTab(ContactsRepository repository) throws IOException {
         this.repository = repository;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SaveContactsTab.fxml"));

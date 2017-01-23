@@ -1,7 +1,8 @@
 package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.InMemoryRepository;
+import com.andreamazzarella.contact_manager.ContactsRepository;
+import com.andreamazzarella.contact_manager.InMemoryContactsRepository;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 public class MainGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        InMemoryRepository myRepo = new InMemoryRepository();
+        InMemoryContactsRepository myRepo = new InMemoryContactsRepository();
         initialiseRepository(myRepo);
 
         ViewRouter viewRouter = new ViewRouter(myRepo);
@@ -27,7 +28,7 @@ public class MainGUI extends Application {
         launch(args);
     }
 
-    private static void initialiseRepository(InMemoryRepository myRepo) {
+    private static void initialiseRepository(InMemoryContactsRepository myRepo) {
         Contact andrea = new Contact("Andrea", "Mazzarella", "Viale Trieste", "GG55", 770012390, 27);
         Contact mario = new Contact("Mario", "Luigi", "Viale Trieste", "GG55", 668899, 111);
 
