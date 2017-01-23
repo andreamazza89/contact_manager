@@ -11,7 +11,7 @@ public class InMemoryRepository {
         this.contacts = new ArrayList<>();
     }
 
-    public List allContacts() {
+    public List<Contact> allContacts() {
         return this.contacts;
     }
 
@@ -19,10 +19,14 @@ public class InMemoryRepository {
         this.contacts.add(contact);
     }
 
-    public List findContact(final String searchTerm) {
+    public List<Contact> findContact(final String searchTerm) {
         return contacts.stream()
                        .filter(contact -> contact.nameContains(searchTerm))
                        .collect(Collectors.toList());
+    }
+
+    public void delete(Contact contact) {
+        contacts.remove(contact);
     }
 }
 

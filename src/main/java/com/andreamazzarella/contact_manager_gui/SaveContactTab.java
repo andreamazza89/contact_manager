@@ -12,29 +12,21 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class SaveTab extends Tab {
-    @FXML
-    private TextField newFirstName;
-    @FXML
-    private TextField newLastName;
-    @FXML
-    private TextField newStreetAddress;
-    @FXML
-    private TextField newPostalCode;
-    @FXML
-    private TextField newTelephoneNumber;
-    @FXML
-    private TextField newAge;
+public class SaveContactTab extends Tab {
+    @FXML private TextField newFirstName;
+    @FXML private TextField newLastName;
+    @FXML private TextField newStreetAddress;
+    @FXML private TextField newPostalCode;
+    @FXML private TextField newTelephoneNumber;
+    @FXML private TextField newAge;
 
-    @FXML
-    private TextField searchTerm;
+    @FXML private TextField searchTerm;
 
-    @FXML
-    private Text contactSavingAlerts;
+    @FXML private Text contactSavingAlerts;
 
     private InMemoryRepository repository;
 
-    public SaveTab(InMemoryRepository repository) throws IOException {
+    public SaveContactTab(InMemoryRepository repository) throws IOException {
         this.repository = repository;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SaveContactsTab.fxml"));

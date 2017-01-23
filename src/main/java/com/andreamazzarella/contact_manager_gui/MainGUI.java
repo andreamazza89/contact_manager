@@ -13,13 +13,9 @@ public class MainGUI extends Application {
         InMemoryRepository myRepo = new InMemoryRepository();
         initialiseRepository(myRepo);
 
-        SearchTab searchTab = new SearchTab(myRepo);
-        SaveTab saveTab = new SaveTab(myRepo);
+        ViewRouter viewRouter = new ViewRouter(myRepo);
 
-        TabPane root = new TabPane();
-        root.getTabs().add(searchTab);
-        root.getTabs().add(saveTab);
-
+        TabPane root = viewRouter.generateRoot();
         Scene scene = new Scene(root, 800, 600);
 
         primaryStage.setTitle("Contact Manager");
