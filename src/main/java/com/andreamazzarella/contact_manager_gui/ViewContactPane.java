@@ -43,7 +43,7 @@ public class ViewContactPane extends GridPane {
         viewContactLastName.setText(contact.getLastName());
         viewContactStreetAddress.setText(contact.getStreetAddress());
         viewContactPostalCode.setText(contact.getPostalCode());
-        viewContactTelephoneNumber.setText(String.valueOf(contact.getTelephoneNumber()));
+        viewContactTelephoneNumber.setText(contact.getTelephoneNumber().getValue());
         viewContactAge.setText(String.valueOf(contact.getAge()));
     }
 

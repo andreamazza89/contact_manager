@@ -2,11 +2,11 @@ package com.andreamazzarella.contact_manager;
 
 import java.util.regex.Pattern;
 
-class TelephoneNumber {
+public class TelephoneNumber {
 
     private final String number;
 
-    TelephoneNumber(String number) {
+    public TelephoneNumber(String number) {
         number = removeAllWhiteSpace(number);
 
         if (isValidNumber(number)) {
@@ -16,7 +16,7 @@ class TelephoneNumber {
         }
     }
 
-    String getNumber() {
+    public String getValue() {
         return number;
     }
 

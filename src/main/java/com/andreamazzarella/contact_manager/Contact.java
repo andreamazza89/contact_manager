@@ -7,11 +7,11 @@ public class Contact {
     private final String firstName;
     private final String streetAddress;
     private final String postalCode;
-    private final int telephoneNumber;
+    private final TelephoneNumber telephoneNumber;
     private final int age;
     private final String lastName;
 
-    public Contact(String firstName, String lastName, String streetAddress, String postalCode, int telephoneNumber, int age) {
+    public Contact(String firstName, String lastName, String streetAddress, String postalCode, TelephoneNumber telephoneNumber, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.streetAddress = streetAddress;
@@ -36,7 +36,7 @@ public class Contact {
         return postalCode;
     }
 
-    public int getTelephoneNumber() {
+    public TelephoneNumber getTelephoneNumber() {
         return telephoneNumber;
     }
 

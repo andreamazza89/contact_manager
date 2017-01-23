@@ -6,7 +6,7 @@ public class ContactBuilder {
     private String lastName = "";
     private String streetAddress = "";
     private String postalCode = "";
-    private int telephoneNumber = 0;
+    private TelephoneNumber telephoneNumber = new TelephoneNumber("0");
     private int age = 18;
 
 
