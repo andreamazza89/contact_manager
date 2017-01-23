@@ -38,12 +38,12 @@ public class SearchContactPane extends GridPane {
         loader.setController(this);
         loader.load();
 
+        setCellValueFactories();
         loadAllContacts();
     }
 
     private void loadAllContacts() {
         List<Contact> allContacts = repository.allContacts();
-
         updateContactsInSearchTable(makeContactListObservable(allContacts));
     }
 
@@ -55,16 +55,21 @@ public class SearchContactPane extends GridPane {
         updateContactsInSearchTable(makeContactListObservable(matches));
     }
 
+    @FXML
+    protected void viewContactLink() throws IOException {
+        Contact selectedContact = searchResultsTable.getSelectionModel().getSelectedItem();
+        viewRouter.showViewContactPane(selectedContact);
+    }
+
     private ObservableList<Contact> makeContactListObservable(List<Contact> matches) {
         return FXCollections.observableArrayList(matches);
     }
 
     private void updateContactsInSearchTable(ObservableList<Contact> contacts) {
         searchResultsTable.setItems(contacts);
+    }
 
-        //? feels like this should be refactored as these are effectively all doing the same
-        //? also I think I should separate updating the observable list and the initial setCellValueFactory setup
-
+    private void setCellValueFactories() {
         firstNameColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getFirstName()));
 
         lastNameColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getLastName()));
@@ -76,12 +81,6 @@ public class SearchContactPane extends GridPane {
         telephoneNumberColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(String.valueOf(contact.getValue().getTelephoneNumber())));
 
         ageColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(String.valueOf(contact.getValue().getAge())));
-    }
-
-    @FXML
-    protected void viewContact() throws IOException {
-        Contact selectedContact = searchResultsTable.getSelectionModel().getSelectedItem();
-        viewRouter.showViewContactPane(selectedContact);
     }
 
 }
