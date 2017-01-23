@@ -2,6 +2,7 @@ group 'com.andreamazzarella'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 jar {
     manifest {
@@ -15,4 +16,12 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }
