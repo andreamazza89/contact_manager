@@ -8,10 +8,10 @@ public class Contact {
     private final String streetAddress;
     private final String postalCode;
     private final TelephoneNumber telephoneNumber;
-    private final int age;
+    private final Age age;
     private final String lastName;
 
-    public Contact(String firstName, String lastName, String streetAddress, String postalCode, TelephoneNumber telephoneNumber, int age) {
+    public Contact(String firstName, String lastName, String streetAddress, String postalCode, TelephoneNumber telephoneNumber, Age age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.streetAddress = streetAddress;
@@ -40,7 +40,7 @@ public class Contact {
         return telephoneNumber;
     }
 
-    public int getAge() {
+    public Age getAge() {
         return age;
     }
 

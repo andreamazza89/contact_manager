@@ -33,4 +33,15 @@ public class AgeTest {
 
         assertEquals("0", testAge.getValue());
     }
+
+    @Test
+    public void knowsWhoIsOlder() {
+        Age testAgeOne = new Age("10");
+        Age testAgeTwo = new Age("30");
+        Age testAgeThree = new Age("10");
+
+        assertEquals(true, testAgeTwo.isEqualOrOlderThan(testAgeOne));
+        assertEquals(false, testAgeOne.isEqualOrOlderThan(testAgeTwo));
+        assertEquals(true, testAgeOne.isEqualOrOlderThan(testAgeThree));
+    }
 }

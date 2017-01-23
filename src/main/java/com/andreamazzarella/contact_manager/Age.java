@@ -15,6 +15,10 @@ public class Age {
         }
     }
 
+    protected boolean isEqualOrOlderThan(Age other_age) {
+       return Integer.parseInt(age) >= Integer.parseInt(other_age.getValue());
+    }
+
     public String getValue() {
         return age;
     }
@@ -28,4 +32,5 @@ public class Age {
         age = age.replaceAll("\\s", "");
         return age;
     }
+
 }

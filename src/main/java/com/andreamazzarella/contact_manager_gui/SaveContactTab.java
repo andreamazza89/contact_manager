@@ -1,9 +1,6 @@
 package com.andreamazzarella.contact_manager_gui;
 
-import com.andreamazzarella.contact_manager.AddContact;
-import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.ContactsRepository;
-import com.andreamazzarella.contact_manager.TelephoneNumber;
+import com.andreamazzarella.contact_manager.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,7 +60,7 @@ public class SaveContactTab extends Tab {
         String streetAddress = newStreetAddress.getText();
         String postalCode = newPostalCode.getText();
         TelephoneNumber telephoneNumber = new TelephoneNumber(newTelephoneNumber.getText());
-        int age = Integer.parseInt(newAge.getText());
+        Age age = new Age(newAge.getText());
 
         return new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
     }

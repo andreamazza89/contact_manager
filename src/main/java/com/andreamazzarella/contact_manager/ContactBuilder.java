@@ -7,7 +7,7 @@ public class ContactBuilder {
     private String streetAddress = "";
     private String postalCode = "";
     private TelephoneNumber telephoneNumber = new TelephoneNumber("0");
-    private int age = 18;
+    private Age age = new Age("18");
 
 
     public ContactBuilder() {
@@ -23,7 +23,7 @@ public class ContactBuilder {
     }
 
     public ContactBuilder setAge(int age) {
-        this.age = age;
+        this.age = new Age(Integer.toString(age));
         return this;
     }
 }
