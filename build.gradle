@@ -1,8 +1,11 @@
 group 'com.andreamazzarella'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
 apply plugin: 'jacoco'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.andreamazzarella.contact_manager_gui.MainGUI"
 
 jar {
     manifest {
