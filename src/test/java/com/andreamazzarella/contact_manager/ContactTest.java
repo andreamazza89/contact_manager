@@ -17,4 +17,5 @@ public class ContactTest {
 
         assertEquals(true, matchesSearchTerm);
     }
+
 }

@@ -70,17 +70,21 @@ public class SearchContactPane extends GridPane {
     }
 
     private void setCellValueFactories() {
-        firstNameColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getFirstName()));
+        //? not sure I can remove the apparent repetition here
 
-        lastNameColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getLastName()));
+        //? I could remove Demeter violation with a Contact presenter? would make the lambda much less lean though
 
-        streetAddressColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getStreetAddress()));
+        firstNameColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getFirstName()));
 
-        postalCodeColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(contact.getValue().getPostalCode()));
+        lastNameColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getLastName()));
 
-        telephoneNumberColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(String.valueOf(contact.getValue().getTelephoneNumber())));
+        streetAddressColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getStreetAddress()));
 
-        ageColumn.setCellValueFactory(contact -> new ReadOnlyObjectWrapper<>(String.valueOf(contact.getValue().getAge())));
+        postalCodeColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getPostalCode()));
+
+        telephoneNumberColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getTelephoneNumber().getValue()));
+
+        ageColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getAge().getValue()));
     }
 
 }

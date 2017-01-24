@@ -1,6 +1,7 @@
 package com.andreamazzarella.contact_manager;
 
 public class AddContact {
+    private static final Age MINIMUM_AGE = new Age("18");
 
     public enum Result {
         SUCCESS, UNDER_MINIMUM_AGE;
@@ -15,7 +16,7 @@ public class AddContact {
     }
 
     public Result execute() {
-        if (contact.getAge() >= 18) {
+        if (contact.getAge().isEqualOrOlderThan(MINIMUM_AGE)) {
             repository.addContact(contact);
             return Result.SUCCESS;
         } else {

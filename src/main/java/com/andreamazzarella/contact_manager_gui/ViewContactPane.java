@@ -43,8 +43,8 @@ public class ViewContactPane extends GridPane {
         viewContactLastName.setText(contact.getLastName());
         viewContactStreetAddress.setText(contact.getStreetAddress());
         viewContactPostalCode.setText(contact.getPostalCode());
-        viewContactTelephoneNumber.setText(String.valueOf(contact.getTelephoneNumber()));
-        viewContactAge.setText(String.valueOf(contact.getAge()));
+        viewContactTelephoneNumber.setText(contact.getTelephoneNumber().getValue());
+        viewContactAge.setText((contact.getAge().getValue()));
     }
 
     @FXML protected void backToSearch() throws IOException {

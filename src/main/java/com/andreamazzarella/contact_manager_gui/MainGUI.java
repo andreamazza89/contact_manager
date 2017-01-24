@@ -1,8 +1,6 @@
 package com.andreamazzarella.contact_manager_gui;
 
-import com.andreamazzarella.contact_manager.Contact;
-import com.andreamazzarella.contact_manager.ContactsRepository;
-import com.andreamazzarella.contact_manager.InMemoryContactsRepository;
+import com.andreamazzarella.contact_manager.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
@@ -29,10 +27,14 @@ public class MainGUI extends Application {
     }
 
     private static void initialiseRepository(ContactsRepository myRepo) {
-        Contact andrea = new Contact("Andrea", "Mazzarella", "Viale Trieste", "GG55", 770012390, 27);
-        Contact mario = new Contact("Mario", "Luigi", "Viale Trieste", "GG55", 668899, 111);
-
+        TelephoneNumber andreasNumber = new TelephoneNumber("073367");
+        Age andreasAge = new Age("27");
+        Contact andrea = new Contact("Andrea", "Mazzarella", "Viale Trieste", "GG55", andreasNumber, andreasAge);
         myRepo.addContact(andrea);
+
+        TelephoneNumber mariosNumber = new TelephoneNumber("80085");
+        Age mariosAge = new Age("37");
+        Contact mario = new Contact("Mario", "Luigi", "Viale Trieste", "GG55", mariosNumber, mariosAge);
         myRepo.addContact(mario);
     }
 }
