@@ -1,36 +1,33 @@
 package com.andreamazzarella.contact_manager;
 
-import java.util.regex.Pattern;
-
 public class Age {
-    private final String age;
 
-    public Age(String age) {
-        age = removeAllWhiteSpace(age);
+    private final int age;
 
-        if (isValidNumber(age)) {
-            this.age = age;
-        } else {
-            this.age = "0";
+    public Age(int age) {
+        checkValidityOfAge(age);
+        this.age = age;
+    }
+
+    private void checkValidityOfAge(int age) {
+        if(!isValid(age)) {
+            throw new IllegalArgumentException("Sorry, but age should be a positive number.");
         }
     }
 
-    protected boolean isEqualOrOlderThan(Age other_age) {
-       return Integer.parseInt(age) >= Integer.parseInt(other_age.getValue());
+    boolean isEqualOrOlderThan(Age other_age) {
+       return age >= other_age.toInt();
     }
 
-    public String getValue() {
+    public int toInt() {
         return age;
     }
 
-    private boolean isValidNumber(String age) {
-        Pattern validNumber = Pattern.compile("\\d+");
-        return validNumber.matcher(age).matches();
+    public static boolean canBeCreatedWith(int age) {
+        return Age.isValid(age);
     }
 
-    private String removeAllWhiteSpace(String age) {
-        age = age.replaceAll("\\s", "");
-        return age;
+    private static boolean isValid(int age) {
+        return age > 0;
     }
-
 }

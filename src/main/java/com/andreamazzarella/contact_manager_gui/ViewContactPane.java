@@ -44,7 +44,7 @@ public class ViewContactPane extends GridPane {
         viewContactStreetAddress.setText(contact.getStreetAddress());
         viewContactPostalCode.setText(contact.getPostalCode());
         viewContactTelephoneNumber.setText(contact.getTelephoneNumber().getValue());
-        viewContactAge.setText((contact.getAge().getValue()));
+        viewContactAge.setText(String.valueOf(contact.getAge().toInt()));
     }
 
     @FXML protected void backToSearch() throws IOException {
@@ -54,7 +54,7 @@ public class ViewContactPane extends GridPane {
     @FXML protected void removeContact() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete user");
-        alert.setContentText("Are you sure you want to deleteContact this user?");
+        alert.setContentText("Are you sure you want to delete this user?");
 
         Optional<ButtonType> confirmation = alert.showAndWait();
 

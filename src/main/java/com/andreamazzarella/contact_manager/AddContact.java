@@ -1,7 +1,7 @@
 package com.andreamazzarella.contact_manager;
 
 public class AddContact {
-    private static final Age MINIMUM_AGE = new Age("18");
+    private static final Age MINIMUM_AGE = new Age(18);
 
     public enum Result {
         SUCCESS, UNDER_MINIMUM_AGE;

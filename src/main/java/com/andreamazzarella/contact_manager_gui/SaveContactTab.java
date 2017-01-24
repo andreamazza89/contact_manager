@@ -35,12 +35,24 @@ public class SaveContactTab extends Tab {
 
     @FXML
     protected void saveContact(ActionEvent actionEvent) {
-        Contact newContact = createContactFromFields();
+        if (userInputIsValid()) {
+            Contact newContact = createContactFromFields();
 
-        AddContact addContact = new AddContact(repository, newContact);
-        AddContact.Result result = addContact.execute();
+            AddContact addContact = new AddContact(repository, newContact);
+            AddContact.Result result = addContact.execute();
 
-        updateUIWithOperationResult(result);
+            updateUIWithOperationResult(result);
+        } else {
+           showInvalidUserInput();
+        }
+    }
+
+    private void showInvalidUserInput() {
+        contactSavingAlerts.setText("Invalid Age, please try again.");
+    }
+
+    private boolean userInputIsValid() {
+        return newAge.getText().matches("\\d+");
     }
 
     private void updateUIWithOperationResult(AddContact.Result result) {
@@ -49,18 +61,18 @@ public class SaveContactTab extends Tab {
                 contactSavingAlerts.setText("Contact saved!");
                 break;
             case UNDER_MINIMUM_AGE:
-                contactSavingAlerts.setText("Contact not saved: under minimum age!");
+                contactSavingAlerts.setText("Contact not saved: under minimum toInt!");
                 break;
         }
     }
 
     private Contact createContactFromFields() {
+        Age age = new Age(Integer.parseInt(newAge.getText()));
         String firstName = newFirstName.getText();
         String lastName = newLastName.getText();
         String streetAddress = newStreetAddress.getText();
         String postalCode = newPostalCode.getText();
         TelephoneNumber telephoneNumber = new TelephoneNumber(newTelephoneNumber.getText());
-        Age age = new Age(newAge.getText());
 
         return new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
     }

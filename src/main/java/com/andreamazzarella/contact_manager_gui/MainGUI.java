@@ -28,12 +28,12 @@ public class MainGUI extends Application {
 
     private static void initialiseRepository(ContactsRepository myRepo) {
         TelephoneNumber andreasNumber = new TelephoneNumber("073367");
-        Age andreasAge = new Age("27");
+        Age andreasAge = new Age(27);
         Contact andrea = new Contact("Andrea", "Mazzarella", "Viale Trieste", "GG55", andreasNumber, andreasAge);
         myRepo.addContact(andrea);
 
         TelephoneNumber mariosNumber = new TelephoneNumber("80085");
-        Age mariosAge = new Age("37");
+        Age mariosAge = new Age(37);
         Contact mario = new Contact("Mario", "Luigi", "Viale Trieste", "GG55", mariosNumber, mariosAge);
         myRepo.addContact(mario);
     }
