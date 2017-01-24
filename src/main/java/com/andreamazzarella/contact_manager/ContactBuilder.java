@@ -7,10 +7,15 @@ public class ContactBuilder {
     private String streetAddress = "";
     private String postalCode = "";
     private TelephoneNumber telephoneNumber = new TelephoneNumber("0");
-    private Age age = new Age("18");
+    private Age age;
 
 
     public ContactBuilder() {
+        try {
+            age = new Age("18");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public ContactBuilder setFirstName(String firstName) {
@@ -23,7 +28,11 @@ public class ContactBuilder {
     }
 
     public ContactBuilder setAge(int age) {
-        this.age = new Age(Integer.toString(age));
+        try {
+            this.age = new Age(Integer.toString(age));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return this;
     }
 }

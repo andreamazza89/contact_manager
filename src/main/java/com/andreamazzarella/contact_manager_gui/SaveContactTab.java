@@ -55,12 +55,18 @@ public class SaveContactTab extends Tab {
     }
 
     private Contact createContactFromFields() {
+        Age age = null;
+        try {
+            age = new Age(newAge.getText());
+        } catch (Age.InvalidAgeException exception) {
+            contactSavingAlerts.setText("Invalid age, please try again");
+        }
+
         String firstName = newFirstName.getText();
         String lastName = newLastName.getText();
         String streetAddress = newStreetAddress.getText();
         String postalCode = newPostalCode.getText();
         TelephoneNumber telephoneNumber = new TelephoneNumber(newTelephoneNumber.getText());
-        Age age = new Age(newAge.getText());
 
         return new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
     }
