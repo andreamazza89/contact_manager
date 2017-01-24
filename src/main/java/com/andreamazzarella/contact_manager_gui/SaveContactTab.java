@@ -52,7 +52,8 @@ public class SaveContactTab extends Tab {
     }
 
     private boolean userInputIsValid() {
-        return newAge.getText().matches("\\d+");
+        String userInput = newAge.getText();
+        return (userInput.matches("\\d+") && Age.canBeCreatedWith(Integer.parseInt(userInput)));
     }
 
     private void updateUIWithOperationResult(AddContact.Result result) {
