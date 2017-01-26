@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class InMemoryContactsRepositoryTest {
     @Test
     public void noContactsFoundIfNoContactsExist() {
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
 
         List allContacts = testRepo.allContacts();
 
@@ -22,7 +22,7 @@ public class InMemoryContactsRepositoryTest {
 
     @Test
     public void searchForInexistentContact() {
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
         testRepo.addContact(andrea);
 
@@ -33,18 +33,21 @@ public class InMemoryContactsRepositoryTest {
 
     @Test
     public void searchForExistingContactByFullName() {
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
         testRepo.addContact(andrea);
 
         List searchResults = testRepo.findContact("Andrea");
 
+        //? This is flakey as it uses object identity, so it implicitly knows that the implementation I am testing
+        //? is the inMemory one. It would be better if the test did not know this detail, so I  could reuse it for other
+        //? implementations
         assertEquals(Collections.singletonList(andrea), searchResults);
     }
 
     @Test
     public void searchForExistingContactByShortenedName() {
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
         testRepo.addContact(andrea);
 
@@ -55,7 +58,7 @@ public class InMemoryContactsRepositoryTest {
 
     @Test
     public void searchForExistingContactByShortenedNameCaseInsensitive() {
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
         testRepo.addContact(andrea);
 
@@ -66,7 +69,7 @@ public class InMemoryContactsRepositoryTest {
 
     @Test
     public void findsAllContactsAvailable() {
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
         testRepo.addContact(andrea);
 
@@ -79,7 +82,7 @@ public class InMemoryContactsRepositoryTest {
 
     @Test
     public void removeContact() {
-        InMemoryContactsRepository testRepo = new InMemoryContactsRepository();
+        ContactsRepository testRepo = new InMemoryContactsRepository();
         Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
         testRepo.addContact(andrea);
 
@@ -87,5 +90,20 @@ public class InMemoryContactsRepositoryTest {
 
         List allContacts = testRepo.allContacts();
         assertEquals(allContacts, new ArrayList<Contact>());
+    }
+
+    @Test
+    public void editContact() {
+        ContactsRepository testRepo = new InMemoryContactsRepository();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        testRepo.addContact(andrea);
+
+        Contact giacomo = new ContactBuilder().setFirstName("Giacomo").build();
+        testRepo.updateContact(andrea, giacomo);
+
+        Contact updatedContact = testRepo.allContacts().get(0);
+
+        assertEquals("Giacomo", updatedContact.getFirstName());
+        assertEquals(1, testRepo.allContacts().size());
     }
 }
