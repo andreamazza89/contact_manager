@@ -1,6 +1,9 @@
 package com.andreamazzarella.contact_manager;
 
 public class AddContact {
+
+    // DUPLICATION: the constant below exists in EditContact and SaveContact. A validating class will probably emerge,
+    // but right now it feels to small so I prefer the duplication
     private static final Age MINIMUM_AGE = new Age(18);
 
     public enum Result {
@@ -16,6 +19,9 @@ public class AddContact {
     }
 
     public Result execute() {
+
+        // DUPLICATION: the logic below exists in EditContact and SaveContact. A validating class will probably emerge,
+        // but right now it feels to small so I prefer the duplication
         if (contact.getAge().isEqualOrOlderThan(MINIMUM_AGE)) {
             repository.addContact(contact);
             return Result.SUCCESS;
