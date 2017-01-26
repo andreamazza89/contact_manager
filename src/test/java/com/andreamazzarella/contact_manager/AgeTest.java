@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AgeShould {
+public class AgeTest {
     Age tenYears = new Age(10);
     Age thirtyYears = new Age(30);
 

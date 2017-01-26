@@ -43,17 +43,28 @@ public class SaveContactTab extends Tab {
 
             updateUIWithOperationResult(result);
         } else {
-           showInvalidUserInput();
+            String errorMessage = "";
+
+            if (!isValidAge(newAge.getText())) errorMessage += "Invalid Age, please try again.\n";
+            if (!isValidTelephoneNumber(newTelephoneNumber .getText())) errorMessage += "Invalid telephone number, please try again.\n";
+
+            contactSavingAlerts.setText(errorMessage);
         }
     }
 
-    private void showInvalidUserInput() {
-        contactSavingAlerts.setText("Invalid Age, please try again.");
+    private boolean userInputIsValid() {
+        String inputAge = newAge.getText();
+        String inputTelephoneNumber = newTelephoneNumber.getText();
+        boolean inputIsValid = isValidAge(inputAge) && isValidTelephoneNumber(inputTelephoneNumber);
+        return inputIsValid;
     }
 
-    private boolean userInputIsValid() {
-        String userInput = newAge.getText();
-        return (userInput.matches("\\d+") && Age.canBeCreatedWith(Integer.parseInt(userInput)));
+    private boolean isValidTelephoneNumber(String inputTelephoneNumber) {
+        return inputTelephoneNumber.matches("[\\d\\s]+") && TelephoneNumber.canBeCreatedWith(inputTelephoneNumber);
+    }
+
+    private boolean isValidAge(String inputAge) {
+        return inputAge.matches("\\d+") && Age.canBeCreatedWith(Integer.parseInt(inputAge));
     }
 
     private void updateUIWithOperationResult(AddContact.Result result) {

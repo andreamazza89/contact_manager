@@ -82,7 +82,7 @@ public class SearchContactPane extends GridPane {
 
         postalCodeColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getPostalCode()));
 
-        telephoneNumberColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getTelephoneNumber().getValue()));
+        telephoneNumberColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getTelephoneNumber().toString()));
 
         ageColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(String.valueOf(cell.getValue().getAge().toInt())));
     }
