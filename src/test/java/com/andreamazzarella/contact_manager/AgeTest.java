@@ -1,47 +1,55 @@
 package com.andreamazzarella.contact_manager;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class AgeTest {
+    Age tenYears = new Age(10);
+    Age thirtyYears = new Age(30);
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void defaultsToZeroWithInvalidFormat() {
-        Age testAge = new Age("ciao");
-
-        assertEquals("0", testAge.getValue());
+    public void justBeANumber() {
+        assertEquals(30, thirtyYears.toInt());
     }
 
     @Test
-    public void retainsAValidNumber() {
-        Age testAge = new Age("00443253");
-
-        assertEquals("00443253", testAge.getValue());
+    public void knowWhoIsOlder() {
+        assertEquals(true, thirtyYears.isEqualOrOlderThan(tenYears));
+        assertEquals(false, tenYears.isEqualOrOlderThan(thirtyYears));
     }
 
     @Test
-    public void ignoresWhiteSpace() {
-        Age testAge = new Age(" 0 0 44");
-
-        assertEquals("0044", testAge.getValue());
+    public void canBeEqual() {
+        assertEquals(true, tenYears.isEqualOrOlderThan(tenYears));
     }
 
     @Test
-    public void defaultsToZeroWithAnotherInvalidFormat() {
-        Age testAge = new Age("4bla5 ");
+    public void notAllowUnborns() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Sorry, but age should be a positive number.");
 
-        assertEquals("0", testAge.getValue());
+        new Age(-55);
     }
 
     @Test
-    public void knowsWhoIsOlder() {
-        Age testAgeOne = new Age("10");
-        Age testAgeTwo = new Age("30");
-        Age testAgeThree = new Age("10");
+    public void notAllowJustBorns() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Sorry, but age should be a positive number.");
 
-        assertEquals(true, testAgeTwo.isEqualOrOlderThan(testAgeOne));
-        assertEquals(false, testAgeOne.isEqualOrOlderThan(testAgeTwo));
-        assertEquals(true, testAgeOne.isEqualOrOlderThan(testAgeThree));
+        new Age(0);
+    }
+
+    @Test
+    public void knowIfGivenAgeIsValid() {
+        assertFalse(Age.canBeCreatedWith(-55));
+        assertTrue(Age.canBeCreatedWith(20));
     }
 }

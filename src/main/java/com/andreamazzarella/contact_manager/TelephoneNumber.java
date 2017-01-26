@@ -7,27 +7,32 @@ public class TelephoneNumber {
     private final String number;
 
     public TelephoneNumber(String number) {
-        number = removeAllWhiteSpace(number);
+        checkValidityOfNumber(number);
 
-        if (isValidNumber(number)) {
-            this.number = number;
-        } else {
-            this.number = "0";
-        }
+        this.number = removeAllWhiteSpace(number);
     }
 
-    public String getValue() {
+    @Override
+    public String toString() {
         return number;
     }
 
-    private boolean isValidNumber(String number) {
+    private void checkValidityOfNumber(String number) {
+        if (!isValidNumber(number)) throw new IllegalArgumentException("Sorry, but the telephone number you entered is not valid.");
+    }
+
+    private static boolean isValidNumber(String number) {
+        number = removeAllWhiteSpace(number);
         Pattern validNumber = Pattern.compile("\\d+");
         return validNumber.matcher(number).matches();
     }
 
-    private String removeAllWhiteSpace(String number) {
+    private static String removeAllWhiteSpace(String number) {
         number = number.replaceAll("\\s", "");
         return number;
     }
 
+    public static boolean canBeCreatedWith(String inputNumber) {
+        return isValidNumber(inputNumber);
+    }
 }
