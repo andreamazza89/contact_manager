@@ -61,6 +61,12 @@ public class SearchContactPane extends GridPane {
         viewRouter.showViewContactPane(selectedContact);
     }
 
+    @FXML
+    protected void editContactLink() throws IOException {
+        Contact selectedContact = searchResultsTable.getSelectionModel().getSelectedItem();
+        viewRouter.showEditContactPane(selectedContact);
+    }
+
     private ObservableList<Contact> makeContactListObservable(List<Contact> matches) {
         return FXCollections.observableArrayList(matches);
     }
@@ -70,8 +76,6 @@ public class SearchContactPane extends GridPane {
     }
 
     private void setCellValueFactories() {
-        //? not sure I can remove the apparent repetition here
-
         //? I could remove Demeter violation with a Contact presenter? would make the lambda much less lean though
 
         firstNameColumn.setCellValueFactory(cell -> new ReadOnlyObjectWrapper<>(cell.getValue().getFirstName()));

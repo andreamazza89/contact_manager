@@ -26,4 +26,24 @@ public class ContactBuilder {
         this.age = new Age(age);
         return this;
     }
+
+    public ContactBuilder setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public ContactBuilder setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+        return this;
+    }
+
+    public ContactBuilder setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+        return this;
+    }
+
+    public ContactBuilder setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = new TelephoneNumber(telephoneNumber);
+        return this;
+    }
 }

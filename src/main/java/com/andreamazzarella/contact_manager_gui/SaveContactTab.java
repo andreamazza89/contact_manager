@@ -1,7 +1,6 @@
 package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
@@ -18,8 +17,6 @@ public class SaveContactTab extends Tab {
     @FXML private TextField newTelephoneNumber;
     @FXML private TextField newAge;
 
-    @FXML private TextField searchTerm;
-
     @FXML private Text contactSavingAlerts;
 
     private ContactsRepository repository;
@@ -33,9 +30,10 @@ public class SaveContactTab extends Tab {
         loader.load();
     }
 
-    @FXML
-    protected void saveContact(ActionEvent actionEvent) {
-        if (userInputIsValid()) {
+    @FXML protected void saveContact() {
+        ContactInputValidator validator = new ContactInputValidator(newAge.getText(), newTelephoneNumber.getText());
+
+        if (validator.userInputIsValid()) {
             Contact newContact = createContactFromFields();
 
             AddContact addContact = new AddContact(repository, newContact);
@@ -43,38 +41,8 @@ public class SaveContactTab extends Tab {
 
             updateUIWithOperationResult(result);
         } else {
-            String errorMessage = "";
-
-            if (!isValidAge(newAge.getText())) errorMessage += "Invalid Age, please try again.\n";
-            if (!isValidTelephoneNumber(newTelephoneNumber .getText())) errorMessage += "Invalid telephone number, please try again.\n";
-
-            contactSavingAlerts.setText(errorMessage);
-        }
-    }
-
-    private boolean userInputIsValid() {
-        String inputAge = newAge.getText();
-        String inputTelephoneNumber = newTelephoneNumber.getText();
-        boolean inputIsValid = isValidAge(inputAge) && isValidTelephoneNumber(inputTelephoneNumber);
-        return inputIsValid;
-    }
-
-    private boolean isValidTelephoneNumber(String inputTelephoneNumber) {
-        return inputTelephoneNumber.matches("[\\d\\s]+") && TelephoneNumber.canBeCreatedWith(inputTelephoneNumber);
-    }
-
-    private boolean isValidAge(String inputAge) {
-        return inputAge.matches("\\d+") && Age.canBeCreatedWith(Integer.parseInt(inputAge));
-    }
-
-    private void updateUIWithOperationResult(AddContact.Result result) {
-        switch (result) {
-            case SUCCESS:
-                contactSavingAlerts.setText("Contact saved!");
-                break;
-            case UNDER_MINIMUM_AGE:
-                contactSavingAlerts.setText("Contact not saved: under minimum toInt!");
-                break;
+            String errorMessages = validator.errorMessages();
+            contactSavingAlerts.setText(errorMessages);
         }
     }
 
@@ -87,5 +55,16 @@ public class SaveContactTab extends Tab {
         TelephoneNumber telephoneNumber = new TelephoneNumber(newTelephoneNumber.getText());
 
         return new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
+    }
+
+    private void updateUIWithOperationResult(AddContact.Result result) {
+        switch (result) {
+            case SUCCESS:
+                contactSavingAlerts.setText("Contact saved!");
+                break;
+            case UNDER_MINIMUM_AGE:
+                contactSavingAlerts.setText("Contact not saved: under minimum age!");
+                break;
+        }
     }
 }

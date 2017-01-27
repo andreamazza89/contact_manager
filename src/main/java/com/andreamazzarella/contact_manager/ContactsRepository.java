@@ -7,4 +7,5 @@ public interface ContactsRepository {
     List<Contact> findContact(String searchTerm);
     void addContact(Contact contact);
     void deleteContact(Contact contact);
+    void updateContact(Contact existingContact, Contact updatedContact);
 }
