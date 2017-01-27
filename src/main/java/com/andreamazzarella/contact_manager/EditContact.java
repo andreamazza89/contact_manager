@@ -8,7 +8,7 @@ public class EditContact {
     // but right now it feels too small so I prefer the duplication
     private static final Age MINIMUM_AGE = new Age(18);
 
-    private final ContactsRepository testRepo;
+    private final ContactsRepository repository;
     private final Contact contact;
 
     private String firstName;
@@ -17,6 +17,23 @@ public class EditContact {
     private String postCode;
     private TelephoneNumber telephoneNumber;
     private Age age;
+
+    public enum Result {
+        UNDER_MINIMUM_AGE, SUCCESS
+    }
+
+    public EditContact(ContactsRepository testRepo, Contact contact) {
+        this.repository = testRepo;
+        this.contact = contact;
+
+        this.firstName = contact.getFirstName();
+        this.lastName = contact.getLastName();
+        this.streetAddress = contact.getStreetAddress();
+        this.postCode = contact.getPostalCode();
+        this.telephoneNumber = contact.getTelephoneNumber();
+        this.age = contact.getAge();
+    }
+
 
     public EditContact changeFirstNameTo(String newFirstName) {
         this.firstName = newFirstName;
@@ -48,29 +65,13 @@ public class EditContact {
         return this;
     }
 
-    public enum Result {
-        UNDER_MINIMUM_AGE, SUCCESS
-    }
-
-    public EditContact(ContactsRepository testRepo, Contact contact) {
-        this.testRepo = testRepo;
-        this.contact = contact;
-
-        this.firstName = contact.getFirstName();
-        this.lastName = contact.getLastName();
-        this.streetAddress = contact.getStreetAddress();
-        this.postCode = contact.getPostalCode();
-        this.telephoneNumber = contact.getTelephoneNumber();
-        this.age = contact.getAge();
-    }
-
     public Result execute() {
 
         // DUPLICATION 002: the logic below exists in EditContact and SaveContact. A validating class will probably emerge,
         // but right now it feels too small so I prefer the duplication
         if (age.isEqualOrOlderThan(MINIMUM_AGE)) {
             Contact editedContact = new Contact(firstName, lastName, streetAddress, postCode, telephoneNumber, age);
-            testRepo.updateContact(contact, editedContact);
+            repository.updateContact(contact, editedContact);
             return SUCCESS;
         } else {
             return UNDER_MINIMUM_AGE;
