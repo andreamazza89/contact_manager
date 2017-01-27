@@ -95,15 +95,16 @@ public class InMemoryContactsRepositoryTest {
     @Test
     public void editContact() {
         ContactsRepository testRepo = new InMemoryContactsRepository();
-        Contact andrea = new ContactBuilder().setFirstName("Andrea").build();
+        Contact andrea = new ContactBuilder().setFirstName("Andrea").setAge(20).build();
         testRepo.addContact(andrea);
 
-        Contact giacomo = new ContactBuilder().setFirstName("Giacomo").build();
+        Contact giacomo = new ContactBuilder().setFirstName("Giacomo").setAge(55).build();
         testRepo.updateContact(andrea, giacomo);
 
         Contact updatedContact = testRepo.allContacts().get(0);
 
         assertEquals("Giacomo", updatedContact.getFirstName());
+        assertEquals(55, updatedContact.getAge().toInt());
         assertEquals(1, testRepo.allContacts().size());
     }
 }

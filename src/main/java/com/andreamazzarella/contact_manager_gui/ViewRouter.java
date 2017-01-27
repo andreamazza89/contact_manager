@@ -37,4 +37,8 @@ class ViewRouter {
     void showSearchContactPane() throws IOException {
         searchContactTab.setContent(new SearchContactPane(myRepo, this));
     }
+
+    void showEditContactPane(Contact selectedContact) throws IOException {
+        searchContactTab.setContent(new EditContactPane(selectedContact, this, myRepo));
+    }
 }

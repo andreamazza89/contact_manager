@@ -8,29 +8,33 @@
 
 <?import javafx.scene.control.Button?>
 
+<?import javafx.scene.layout.HBox?>
 <fx:root type="javafx.scene.layout.GridPane" xmlns:fx="http://javafx.com/fxml"
          alignment="center" hgap="10" vgap="10" >
 
-        <Label text="Enter search term" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Label text="Enter search term" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
-        <TextField fx:id="searchTerm" onAction="#updateSearchResults"
-                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="searchTerm" onAction="#updateSearchResults"
+               GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-        <TableView fx:id="searchResultsTable" GridPane.columnIndex="0" GridPane.rowIndex="2">
-            <columns>
-                <TableColumn fx:id="firstNameColumn" text="Name"/>
+    <TableView fx:id="searchResultsTable" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <columns>
+            <TableColumn fx:id="firstNameColumn" text="Name"/>
 
-                <TableColumn fx:id="lastNameColumn" text="Surname"/>
+            <TableColumn fx:id="lastNameColumn" text="Surname"/>
 
-                <TableColumn fx:id="streetAddressColumn" text="Street Address"/>
+            <TableColumn fx:id="streetAddressColumn" text="Street Address"/>
 
-                <TableColumn fx:id="postalCodeColumn" text="Post Code"/>
+            <TableColumn fx:id="postalCodeColumn" text="Post Code"/>
 
-                <TableColumn fx:id="telephoneNumberColumn" text="Telephone Number"/>
+            <TableColumn fx:id="telephoneNumberColumn" text="Telephone Number"/>
 
-                <TableColumn fx:id="ageColumn" text="Age"/>
-            </columns>
-        </TableView>
+            <TableColumn fx:id="ageColumn" text="Age"/>
+        </columns>
+    </TableView>
 
-        <Button onAction="#viewContactLink" text="View selected contact" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <HBox GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <Button onAction="#viewContactLink" text="View selected contact" />
+        <Button onAction="#editContactLink" text="Edit selected contact" />
+    </HBox>
 </fx:root>

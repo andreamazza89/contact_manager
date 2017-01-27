@@ -35,8 +35,8 @@ public class InMemoryContactsRepository implements ContactsRepository {
 
     @Override
     public void updateContact(Contact existingContact, Contact updatedContact) {
-        this.deleteContact(existingContact);
-        this.addContact(updatedContact);
+        deleteContact(existingContact);
+        addContact(updatedContact);
     }
 
 }
