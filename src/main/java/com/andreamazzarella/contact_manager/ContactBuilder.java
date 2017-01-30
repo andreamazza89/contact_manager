@@ -7,7 +7,7 @@ public class ContactBuilder {
     private String firstName = "";
     private String lastName = "";
     private String streetAddress = "";
-    private Optional<String> postalCode = Optional.of("");
+    private Optional<String> postalCode = Optional.empty();
     private TelephoneNumber telephoneNumber = new TelephoneNumber("0");
     private Age age = new Age(18);
 
