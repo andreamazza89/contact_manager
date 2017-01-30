@@ -18,10 +18,10 @@ public class TelephoneNumber {
     }
 
     private void checkValidityOfNumber(String number) {
-        if (!isValidNumber(number)) throw new IllegalArgumentException("Sorry, but the telephone number you entered is not valid.");
+        if (!isValidTelephoneNumber(number)) throw new IllegalArgumentException("Invalid number: " + number);
     }
 
-    private static boolean isValidNumber(String number) {
+    private static boolean isValidTelephoneNumber(String number) {
         number = removeAllWhiteSpace(number);
         Pattern validNumber = Pattern.compile("\\d+");
         return validNumber.matcher(number).matches();
@@ -33,6 +33,6 @@ public class TelephoneNumber {
     }
 
     public static boolean canBeCreatedWith(String inputNumber) {
-        return isValidNumber(inputNumber);
+        return isValidTelephoneNumber(inputNumber);
     }
 }

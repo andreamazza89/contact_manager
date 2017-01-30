@@ -38,7 +38,7 @@ public class EditContactPane extends GridPane {
         newStreetAddress.setText(contact.getStreetAddress());
         newPostalCode.setText(contact.getPostalCode().orElse(""));
         newTelephoneNumber.setText(contact.getTelephoneNumber().toString());
-        newAge.setText(String.valueOf(contact.getAge().toInt()));
+        newAge.setText(String.valueOf(contact.getAge().inYears()));
     }
 
     @FXML protected void editContact() {

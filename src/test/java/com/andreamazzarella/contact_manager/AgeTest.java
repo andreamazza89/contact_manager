@@ -17,7 +17,7 @@ public class AgeTest {
 
     @Test
     public void justBeANumber() {
-        assertEquals(30, thirtyYears.toInt());
+        assertEquals(30, thirtyYears.inYears());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class AgeTest {
     @Test
     public void notAllowUnborns() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Sorry, but age should be a positive number.");
+        thrown.expectMessage("Invalid age: -55");
 
         new Age(-55);
     }
@@ -42,7 +42,7 @@ public class AgeTest {
     @Test
     public void notAllowJustBorns() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Sorry, but age should be a positive number.");
+        thrown.expectMessage("Invalid age: 0");
 
         new Age(0);
     }

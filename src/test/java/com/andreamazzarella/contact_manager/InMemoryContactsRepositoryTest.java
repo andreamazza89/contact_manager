@@ -104,7 +104,7 @@ public class InMemoryContactsRepositoryTest {
         Contact updatedContact = testRepo.allContacts().get(0);
 
         assertEquals("Giacomo", updatedContact.getFirstName());
-        assertEquals(55, updatedContact.getAge().toInt());
+        assertEquals(55, updatedContact.getAge().inYears());
         assertEquals(1, testRepo.allContacts().size());
     }
 }

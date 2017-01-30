@@ -11,15 +11,15 @@ public class Age {
 
     private void checkValidityOfAge(int age) {
         if(!isValid(age)) {
-            throw new IllegalArgumentException("Sorry, but age should be a positive number.");
+            throw new IllegalArgumentException("Invalid age: " + age);
         }
     }
 
     boolean isEqualOrOlderThan(Age other_age) {
-       return age >= other_age.toInt();
+       return age >= other_age.inYears();
     }
 
-    public int toInt() {
+    public int inYears() {
         return age;
     }
 

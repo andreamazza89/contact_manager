@@ -67,7 +67,7 @@ public class EditContactTest {
         assertEquals("Rugged Place", updatedContact.getStreetAddress());
         assertEquals(Optional.of("DC21"), updatedContact.getPostalCode());
         assertEquals("0514949", updatedContact.getTelephoneNumber().toString());
-        assertEquals(44, updatedContact.getAge().toInt());
+        assertEquals(44, updatedContact.getAge().inYears());
         assertEquals(1, testRepo.allContacts().size());
         assertEquals(EditContact.Result.SUCCESS, transactionResult);
     }

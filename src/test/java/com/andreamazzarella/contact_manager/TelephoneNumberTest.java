@@ -14,7 +14,7 @@ public class TelephoneNumberTest {
     @Test
     public void doesNotAllowInvalidFormat() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Sorry, but the telephone number you entered is not valid.");
+        thrown.expectMessage("Invalid number: ciao");
 
          new TelephoneNumber("ciao");
     }
