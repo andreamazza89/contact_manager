@@ -36,7 +36,7 @@ public class EditContactPane extends GridPane {
         newFirstName.setText(contact.getFirstName());
         newLastName.setText(contact.getLastName());
         newStreetAddress.setText(contact.getStreetAddress());
-        newPostalCode.setText(contact.getPostalCode());
+        newPostalCode.setText(contact.getPostalCode().orElse(""));
         newTelephoneNumber.setText(contact.getTelephoneNumber().toString());
         newAge.setText(String.valueOf(contact.getAge().toInt()));
     }

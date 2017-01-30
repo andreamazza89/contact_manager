@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class SaveContactTab extends Tab {
     @FXML private TextField newFirstName;
@@ -51,7 +52,7 @@ public class SaveContactTab extends Tab {
         String firstName = newFirstName.getText();
         String lastName = newLastName.getText();
         String streetAddress = newStreetAddress.getText();
-        String postalCode = newPostalCode.getText();
+        Optional<String> postalCode = newPostalCode.getText() == "" ? Optional.empty() : Optional.of(newPostalCode.getText());
         TelephoneNumber telephoneNumber = new TelephoneNumber(newTelephoneNumber.getText());
 
         return new Contact(firstName, lastName, streetAddress, postalCode, telephoneNumber, age);
