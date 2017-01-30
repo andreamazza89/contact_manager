@@ -1,11 +1,13 @@
 package com.andreamazzarella.contact_manager;
 
+import java.util.Optional;
+
 public class ContactBuilder {
 
     private String firstName = "";
     private String lastName = "";
     private String streetAddress = "";
-    private String postalCode = "";
+    private Optional<String> postalCode = Optional.of("");
     private TelephoneNumber telephoneNumber = new TelephoneNumber("0");
     private Age age = new Age(18);
 
@@ -38,7 +40,7 @@ public class ContactBuilder {
     }
 
     public ContactBuilder setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+        this.postalCode = Optional.of(postalCode);
         return this;
     }
 

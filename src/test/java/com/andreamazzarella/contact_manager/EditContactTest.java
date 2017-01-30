@@ -1,6 +1,9 @@
 package com.andreamazzarella.contact_manager;
 
 import org.junit.Test;
+
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 public class EditContactTest {
@@ -62,7 +65,7 @@ public class EditContactTest {
         assertEquals("Danny", updatedContact.getFirstName());
         assertEquals("Elfman", updatedContact.getLastName());
         assertEquals("Rugged Place", updatedContact.getStreetAddress());
-        assertEquals("DC21", updatedContact.getPostalCode());
+        assertEquals(Optional.of("DC21"), updatedContact.getPostalCode());
         assertEquals("0514949", updatedContact.getTelephoneNumber().toString());
         assertEquals(44, updatedContact.getAge().toInt());
         assertEquals(1, testRepo.allContacts().size());

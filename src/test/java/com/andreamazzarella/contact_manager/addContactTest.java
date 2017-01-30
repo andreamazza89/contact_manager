@@ -18,7 +18,7 @@ public class AddContactTest {
 
         addContact.execute();
 
-        List contactsAdded = testRepo.allContacts();
+        List<Contact> contactsAdded = testRepo.allContacts();
         assertEquals(Collections.singletonList(testContact), contactsAdded);
     }
 
@@ -41,7 +41,7 @@ public class AddContactTest {
 
         addContact.execute();
 
-        List contactsAdded = testRepo.allContacts();
+        List<Contact> contactsAdded = testRepo.allContacts();
         assertEquals(new ArrayList<>(), contactsAdded);
     }
 

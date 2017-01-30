@@ -1,5 +1,7 @@
 package com.andreamazzarella.contact_manager;
 
+import java.util.Optional;
+
 import static com.andreamazzarella.contact_manager.EditContact.Result.SUCCESS;
 import static com.andreamazzarella.contact_manager.EditContact.Result.UNDER_MINIMUM_AGE;
 
@@ -14,7 +16,7 @@ public class EditContact {
     private String firstName;
     private String lastName;
     private String streetAddress;
-    private String postCode;
+    private Optional<String> postCode;
     private TelephoneNumber telephoneNumber;
     private Age age;
 
@@ -51,7 +53,7 @@ public class EditContact {
     }
 
     public EditContact changePostalCodeTo(String newPostCode) {
-        this.postCode = newPostCode;
+        this.postCode = Optional.of(newPostCode);
         return this;
     }
 
