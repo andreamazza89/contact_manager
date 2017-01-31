@@ -5,22 +5,22 @@
 <?import javafx.scene.text.Text?>
 <fx:root type="javafx.scene.layout.GridPane" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <Label text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-    <TextField fx:id="newFirstName" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <TextField fx:id="newFirstName" GridPane.columnIndex="1" GridPane.rowIndex="0" onAction="#saveContact"/>
 
     <Label text="Last Name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField fx:id="newLastName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField fx:id="newLastName" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#saveContact"/>
 
     <Label text="Street Address" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <TextField fx:id="newStreetAddress" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <TextField fx:id="newStreetAddress" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#saveContact"/>
 
     <Label text="Post Code" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-    <TextField fx:id="newPostalCode" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <TextField fx:id="newPostalCode" GridPane.columnIndex="1" GridPane.rowIndex="3" onAction="#saveContact"/>
 
     <Label text="Telephone Number" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-    <TextField fx:id="newTelephoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <TextField fx:id="newTelephoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#saveContact"/>
 
     <Label text="Age" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-    <TextField fx:id="newAge" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    <TextField fx:id="newAge" GridPane.columnIndex="1" GridPane.rowIndex="5" onAction="#saveContact"/>
 
     <Button fx:id="saveContact" text="Save" onAction="#saveContact" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
     <Button text="Back to search" onAction="#backToSearch" GridPane.columnIndex="1" GridPane.rowIndex="7"/>

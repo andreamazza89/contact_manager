@@ -36,6 +36,7 @@
     <HBox GridPane.columnIndex="0" GridPane.rowIndex="3">
         <Button onAction="#viewContactLink" text="View selected contact" />
         <Button onAction="#editContactLink" text="Edit selected contact" />
+        <Button onAction="#removeContact"   text="Remove selected contact"/>
         <Button onAction="#addContactLink"  text="Add a new contact" />
     </HBox>
 </fx:root>

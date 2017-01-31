@@ -2,6 +2,7 @@ package com.andreamazzarella.contact_manager_gui;
 
 import com.andreamazzarella.contact_manager.Contact;
 import com.andreamazzarella.contact_manager.ContactsRepository;
+import com.andreamazzarella.contact_manager.RemoveContact;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public class SearchContactPane extends GridPane {
     @FXML private TextField searchTerm;
@@ -48,7 +50,7 @@ public class SearchContactPane extends GridPane {
     }
 
     @FXML
-    protected void updateSearchResults(ActionEvent actionEvent) {
+    protected void updateSearchResults() {
         String searchFor = searchTerm.getText();
         List<Contact> matches = repository.findContact(searchFor);
 
@@ -70,6 +72,22 @@ public class SearchContactPane extends GridPane {
     @FXML
     protected void addContactLink() throws IOException {
         viewRouter.showAddContactPane();
+    }
+
+    @FXML protected void removeContact() throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete user");
+        alert.setContentText("Are you sure you want to delete this user?");
+
+        Optional<ButtonType> confirmation = alert.showAndWait();
+
+        if (confirmation.get() == ButtonType.OK) {
+            Contact selectedContact = searchResultsTable.getSelectionModel().getSelectedItem();
+            RemoveContact removeContact = new RemoveContact(repository, selectedContact);
+            removeContact.execute();
+            updateSearchResults();
+        }
+
     }
 
     private ObservableList<Contact> makeContactListObservable(List<Contact> matches) {

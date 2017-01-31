@@ -28,8 +28,8 @@ class ContactInputValidator {
     String errorMessages() {
         String errorMessage = "";
 
-        if (!isValidAge()) errorMessage += "Invalid Age, please try again.\n";
         if (!isValidTelephoneNumber()) errorMessage += "Invalid telephone number, please try again.\n";
+        if (!isValidAge()) errorMessage += "Invalid Age, please try again.\n";
 
         return errorMessage;
     }
