@@ -28,6 +28,8 @@ test {
     exclude "**/FeatureTest*"
 }
 
+task fullTest(type: Test)
+
 jacocoTestReport {
     reports {
         xml.enabled false
