@@ -15,11 +15,20 @@ jar {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile "org.testfx:testfx-core:4.0.+"
+    testCompile "org.testfx:testfx-junit:4.0.+"
 }
+
+test {
+    exclude "**/FeatureTest*"
+}
+
+task fullTest(type: Test)
 
 jacocoTestReport {
     reports {

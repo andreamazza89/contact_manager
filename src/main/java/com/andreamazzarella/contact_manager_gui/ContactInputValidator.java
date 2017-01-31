@@ -17,11 +17,11 @@ class ContactInputValidator {
         return isValidAge() && isValidTelephoneNumber();
     }
 
-    boolean isValidAge() {
+    private boolean isValidAge() {
         return inputAge.matches("\\d+") && Age.canBeCreatedWith(Integer.parseInt(inputAge));
     }
 
-    boolean isValidTelephoneNumber() {
+    private boolean isValidTelephoneNumber() {
         return inputTelephoneNumber.matches("[\\d\\s]+") && TelephoneNumber.canBeCreatedWith(inputTelephoneNumber);
     }
 
