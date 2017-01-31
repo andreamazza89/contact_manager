@@ -3,14 +3,14 @@ package com.andreamazzarella.contact_manager_gui;
 import com.andreamazzarella.contact_manager.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.Optional;
 
-public class SaveContactTab extends Tab {
+public class SaveContactPane extends GridPane {
     @FXML private TextField newFirstName;
     @FXML private TextField newLastName;
     @FXML private TextField newStreetAddress;
@@ -20,12 +20,14 @@ public class SaveContactTab extends Tab {
 
     @FXML private Text contactSavingAlerts;
 
+    private final ViewRouter viewRouter;
     private ContactsRepository repository;
 
-    SaveContactTab(ContactsRepository repository) throws IOException {
+    SaveContactPane(ViewRouter viewRouter, ContactsRepository repository) throws IOException {
+        this.viewRouter = viewRouter;
         this.repository = repository;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SaveContactsTab.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SaveContactsPane.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         loader.load();
@@ -45,6 +47,10 @@ public class SaveContactTab extends Tab {
             String errorMessages = validator.errorMessages();
             contactSavingAlerts.setText(errorMessages);
         }
+    }
+
+    @FXML protected void backToSearch() throws IOException {
+        viewRouter.showSearchContactPane();
     }
 
     private Contact createContactFromFields() {
