@@ -14,7 +14,7 @@
 
     <Label text="Enter search term" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
-    <TextField fx:id="searchTerm" onAction="#updateSearchResults"
+    <TextField fx:id="searchTerm" onKeyReleased="#updateSearchResults"
                GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
     <TableView fx:id="searchResultsTable" GridPane.columnIndex="0" GridPane.rowIndex="2">
