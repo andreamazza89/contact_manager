@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <fx:root type="javafx.scene.layout.GridPane" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-
     <Label text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
     <TextField fx:id="newFirstName" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
@@ -26,8 +22,8 @@
     <Label text="Age" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
     <TextField fx:id="newAge" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
-    <Button text="Update" onAction="#editContact" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    <Button fx:id="saveContact" text="Save" onAction="#saveContact" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
     <Button text="Back to search" onAction="#backToSearch" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
 
-    <Text fx:id="contactEditingAlerts" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.rowSpan="2"/>
+    <Text fx:id="contactSavingAlerts" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.rowSpan="2"/>
 </fx:root>

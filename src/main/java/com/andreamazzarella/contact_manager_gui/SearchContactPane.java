@@ -67,6 +67,11 @@ public class SearchContactPane extends GridPane {
         viewRouter.showEditContactPane(selectedContact);
     }
 
+    @FXML
+    protected void addContactLink() throws IOException {
+        viewRouter.showAddContactPane();
+    }
+
     private ObservableList<Contact> makeContactListObservable(List<Contact> matches) {
         return FXCollections.observableArrayList(matches);
     }

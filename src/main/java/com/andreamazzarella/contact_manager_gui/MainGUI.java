@@ -3,7 +3,7 @@ package com.andreamazzarella.contact_manager_gui;
 import com.andreamazzarella.contact_manager.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -16,7 +16,7 @@ public class MainGUI extends Application {
 
         ViewRouter viewRouter = new ViewRouter(myRepo);
 
-        TabPane root = viewRouter.generateRoot();
+        BorderPane root = viewRouter.generateRoot();
         Scene scene = new Scene(root, 800, 600);
 
         primaryStage.setTitle("Contact Manager");
